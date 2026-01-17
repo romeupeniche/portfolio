@@ -1,132 +1,131 @@
-import { useState } from "react";
-import PreviewIcon from "../../../assets/icons/PreviewIcon";
+import { useEffect, useState } from "react";
 import type { IProject } from "../../../data/projectsData";
-import { techData } from "../../../data/techData";
 import ChevronIcon from "../../icons/ChevronIcon";
-import GithubLogo from "../../icons/GithubIcon";
 import { useSettingsStore } from "../../../store/useSettingsStore";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Web: React.FC<{ project: IProject }> = ({ project }) => {
-  const {
-    title,
-    images,
-    icon: Icon,
-    period,
-    mainTechUsed,
-    description,
-    extraTechUsed,
-    type,
-    deploy,
-    link,
-    githubURL,
-  } = project;
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
-  const { lang, t } = useSettingsStore();
-  let previewIconClasses = "w-12 h-12";
-  let previewOnClick: () => void;
-  if (deploy === "netlify") {
-    previewIconClasses +=
-      " text-main-blue cursor-pointer hover:text-white transition";
-    previewOnClick = () => {
-      window.open(link!, "_blank");
-    };
-  } else if (deploy === "development") {
-    previewIconClasses += " text-[rgba(255,255,255,0.3)] cursor-not-allowed";
-    previewOnClick = () => {};
-  }
-  return (
-    <div className="mx-auto max-w-5xl space-y-4 text-neutral-400">
-      <header className="flex items-center justify-between">
-        <h2 className="text-8xl font-bold text-neutral-200">{title}</h2>
-        <Icon className="text-white h-25 w-25" />
-      </header>
-      <nav className="flex justify-between items-center">
-        <PreviewIcon className={previewIconClasses} onClick={previewOnClick!} />
-        <div>
-          {type[lang]} | {period[lang]}
-        </div>
-        <GithubLogo
-          className="w-12 h-12 text-main-blue cursor-pointer hover:text-white transition"
-          onClick={() => window.open(githubURL, "_blank")}
-        />
-      </nav>
+  const { lang } = useSettingsStore();
 
-      <p>{description[lang]}</p>
-      <div className="border-[rgba(255,255,255,0.3)] border rounded-2xl flex p-4">
-        <nav className="flex px-2 items-center">
-          <ChevronIcon
-            className="rotate-180"
-            onClick={() =>
-              setCurrentImageIndex((prev) => (prev - 1 >= 0 ? (prev -= 1) : 0))
-            }
-          />
-        </nav>
-        <nav className="flex-1 flex flex-col justify-center items-center">
-          <div className="relative flex justify-center items-center w-full">
-            <header className="flex flex-col justify-center items-center">
-              <h1 className="text-xl font-bold">
-                {images[currentImageIndex].title[lang]}
-              </h1>
-              <span className="text-sm opacity-70">
-                ({currentImageIndex + 1}/{images.length})
-              </span>
-            </header>
+  const nextImage = () =>
+    setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
+  const prevImage = () =>
+    setCurrentImageIndex(
+      (prev) => (prev - 1 + project.images.length) % project.images.length
+    );
+
+  useEffect(() => {
+    const handleArrow = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") {
+        nextImage();
+      } else if (e.key === "ArrowLeft") {
+        prevImage();
+      }
+    };
+    window.addEventListener("keydown", handleArrow);
+
+    return () => {
+      window.removeEventListener("keydown", handleArrow);
+    };
+  });
+
+  return (
+    <div className="flex flex-col h-full bg-[#0a0a0a]">
+      <section className="relative group shrink-0 bg-black border-b border-white/5">
+        <div className="relative w-full h-[500px] bg-[#050505] overflow-hidden">
+          <div
+            className="w-full h-full overflow-y-auto overflow-x-hidden scroll-smooth custom-scrollbar"
+            style={{ isolation: "isolate" }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentImageIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="w-full"
+              >
+                <img
+                  src={project.images[currentImageIndex].img}
+                  alt="Project"
+                  className="w-full h-auto select-none"
+                  draggable={false}
+                />
+              </motion.div>
+            </AnimatePresence>
           </div>
-          <div className="w-full h-70 overflow-y-scroll scroll-hidden-with-cursor px-4 mb-4">
-            <img
-              src={images[currentImageIndex].img}
-              className="w-full h-auto rounded-xl"
+
+          <div className="absolute inset-0 pointer-events-none flex items-center justify-between px-4">
+            <button
+              className="group/wrapper w-12 h-12 cursor-pointer flex items-center justify-center rounded-full bg-black/60 border border-white/10 pointer-events-auto hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+              onClick={prevImage}
+            >
+              <ChevronIcon className="w-6 h-6 rotate-180 text-white group-hover/wrapper:text-light-blue relative -left-0.5 transition-colors" />
+            </button>
+            <button
+              onClick={nextImage}
+              className="group/wrapper w-12 h-12 cursor-pointer flex items-center justify-center rounded-full bg-black/60 border border-white/10 pointer-events-auto hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+            >
+              <ChevronIcon className="w-6 h-6 text-white relative group-hover/wrapper:text-light-blue -right-0.5 transition-colors" />
+            </button>
+          </div>
+        </div>
+
+        <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+          {project.images.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentImageIndex(idx)}
+              className={`h-1.5 rounded-full transition-all ${
+                idx === currentImageIndex
+                  ? "w-8 bg-light-blue"
+                  : "w-2 bg-white/20 hover:bg-white/40"
+              }`}
             />
+          ))}
+        </div>
+      </section>
+
+      <section className="p-8 space-y-8 max-w-5xl mx-auto w-full">
+        <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/5 pb-6">
+          <div className="space-y-1">
+            <span className="text-light-blue font-mono text-[10px] tracking-[0.3em] uppercase">
+              Page Overview
+            </span>
+            <h3 className="text-4xl font-black text-white tracking-tight leading-none italic">
+              {project.images[currentImageIndex].title[lang]}
+            </h3>
           </div>
-          <p className="mb-4 text-center">
-            {images[currentImageIndex].description[lang].title}
+          <p className="text-gray-400 font-medium italic text-sm md:text-right max-w-md">
+            "{project.images[currentImageIndex].description[lang].title}"
           </p>
-          {images[currentImageIndex].description[lang].bullets.map(
-            ({ body, title }) => (
-              <section>
-                <h1 className="font-bold">{title}</h1>
-                <p className="ml-4">{body}</p>
-              </section>
+        </header>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 pb-12">
+          {project.images[currentImageIndex].description[lang].bullets.map(
+            ({ title, body }, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                className="group"
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="shrink-0 w-6 h-px bg-light-blue/50 group-hover:w-10 transition-all" />
+                  <h4 className="text-white font-bold text-sm tracking-wide uppercase group-hover:text-light-blue transition-colors">
+                    {title}
+                  </h4>
+                </div>
+                <p className="text-gray-400 text-sm leading-relaxed pl-9">
+                  {body}
+                </p>
+              </motion.div>
             )
           )}
-        </nav>
-        <nav className="flex px-2 justify-center flex-col">
-          <ChevronIcon
-            className="self-center"
-            onClick={() =>
-              setCurrentImageIndex((prev) =>
-                prev + 1 <= images.length - 1 ? (prev += 1) : 0
-              )
-            }
-          />
-        </nav>
-      </div>
-      <h2 className="text-3xl font-medium text-center">
-        {t("projects.coreStack")}
-      </h2>
-      <section className="flex gap-4 justify-evenly items-center my-4">
-        {mainTechUsed.map((techId) => {
-          const tech = techData
-            .flatMap((category) => category.items)
-            .find((item) => item.id === techId);
-
-          if (!tech) return null;
-          const { icon: Icon, title } = tech;
-
-          return (
-            <div className="flex-col flex items-center justify-center">
-              <Icon className="w-20 h-20 text-main-blue" />
-              <span className="text-xl">{title}</span>
-            </div>
-          );
-        })}
+        </div>
       </section>
-      <h2 className="text-3xl font-medium text-center">
-        {t("projects.librariesTools")}
-      </h2>
-      <p className="text-center text-lg">
-        {extraTechUsed.map((title, idx) => `${idx == 0 ? "" : ", "}${title}`)}
-      </p>
     </div>
   );
 };

@@ -349,8 +349,8 @@ export const PROJECTS_DATA: IProject[] = [
     githubURL: "https://github.com/romeupeniche/trevo",
     platform: "mobile",
     description: {
-      en: "describing trevo",
-      br: "descrevendo trevo",
+      en: "Trevo is a robust last-mile logistics solution designed to streamline complex B2B delivery and pickup workflows. Developed with a focus on field operational intelligence, the app transforms traditional manual processes into a high-precision digital environment. It features advanced route synchronization, a persistent location-based knowledge base for drivers, and a visual-first inventory system. Validated with real-world distribution data, Trevo solves critical friction points in the supply chain, from automated Proof of Delivery (PoD) to intelligent cargo management, making it an adaptable tool for any high-volume distribution vertical.",
+      br: "O Trevo é uma solução logística de last-mile desenvolvida para otimizar fluxos complexos de entrega e coleta B2B. Focado em inteligência operacional de campo, o app transforma processos manuais tradicionais em um ambiente digital de alta precisão. Apresenta sincronização avançada de rotas, base de conhecimento persistente por geolocalização e um sistema de inventário focado em identificação visual. Validado com dados reais de distribuição, o Trevo resolve pontos críticos de fricção na cadeia de suprimentos, desde a Prova de Entrega (PoD) automatizada até o gerenciamento inteligente de carga, sendo uma ferramenta adaptável para qualquer vertical de distribuição.",
     },
     period: {
       en: "Aug 2025 - Ongoing",
@@ -458,7 +458,7 @@ export const PROJECTS_DATA: IProject[] = [
       {
         title: {
           en: "Order Details",
-          br: "Detalhes do Pedido",
+          br: "Sumário",
         },
         img: tr_delivery,
         description: {

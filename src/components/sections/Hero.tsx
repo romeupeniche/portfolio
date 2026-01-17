@@ -116,33 +116,36 @@ const Hero: React.FC = () => {
       <div className="relative z-1 flex flex-col items-center justify-center text-center mx-auto px-4">
         <div
           className={`relative w-48 h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden mb-8 border border-white/10
-    will-change-transform 
-    ${
-      isLowPerf
-        ? "shadow-none"
-        : "backdrop-blur-[6px] shadow-xl hover:border-light-blue/30"
-    }
-            group transition-all duration-300 transform hover:scale-105`}
+          will-change-transform 
+          ${
+            isLowPerf
+              ? "shadow-none"
+              : "backdrop-blur-[6px] shadow-2xl hover:border-blue-400/30"
+          }
+          group transition-all duration-500 transform hover:scale-105`}
           onMouseEnter={() => setIsHoveringPhoto(true)}
           onMouseLeave={() => setIsHoveringPhoto(false)}
         >
           <img
             src={profile}
             alt="Profile"
-            className={`w-full h-full object-cover transition-all duration-500 
-              ${isHoveringPhoto ? "grayscale-0" : "grayscale"}
-              filter ${isHoveringPhoto ? "brightness-110" : "brightness-90"}
+            className={`w-full h-full object-cover transition-all duration-700 
+              ${
+                isHoveringPhoto
+                  ? "grayscale-0 scale-110"
+                  : "grayscale scale-100"
+              }
+              filter ${isHoveringPhoto ? "brightness-110" : "brightness-75"}
             `}
           />
 
           {!isLowPerf && (
             <>
-              <div className="absolute inset-0 rounded-full ring-4 ring-light-blue animate-pulse-slow"></div>
-
+              <div className="absolute inset-0 rounded-full ring-2 ring-blue-500/20 animate-pulse-slow"></div>
               <div
-                className={`absolute inset-0 bg-linear-to-br transition-all ${
-                  isHoveringPhoto ? "opacity-100" : "opacity-0"
-                } from-main-blue/10 via-transparent to-light-blue/10 animate-pulse-fast-short`}
+                className={`absolute inset-0 bg-gradient-to-br transition-all duration-700 ${
+                  isHoveringPhoto ? "opacity-30" : "opacity-0"
+                } from-blue-500/20 via-transparent to-cyan-500/20`}
               ></div>
             </>
           )}

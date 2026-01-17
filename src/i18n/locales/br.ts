@@ -29,11 +29,13 @@ export const br = {
   },
   projects: {
     title: "Projetos em Destaque",
+
+    projectDetails: "Detalhes do Projeto",
     coreStack: "Tecnologias Principais",
     librariesTools: "Bibliotecas e Ferramentas",
-    fullViewImage: "Ver em Tela Cheia",
-
     featureBreakdown: "Funcionalidades",
+    sourceCode: "Código Fonte",
+    livePreview: "Visualizar Projeto",
   },
   contact: {
     title: "Fale Comigo",

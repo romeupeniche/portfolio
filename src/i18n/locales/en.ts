@@ -29,11 +29,13 @@ export const en = {
   },
   projects: {
     title: "Featured Projects",
+
+    projectDetails: "Project Details",
     coreStack: "Core Stack",
     librariesTools: "Libraries & Tools",
-    fullViewImage: "Full View",
-
     featureBreakdown: "Feature Breakdown",
+    livePreview: "Live Preview",
+    sourceCode: "Source Code",
   },
   contact: {
     title: "Contact Me",

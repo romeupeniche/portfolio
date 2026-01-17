@@ -31,3 +31,28 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px; 
+  height: 5px; 
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #262626; 
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6; 
+}
+
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #262626 transparent;
+  padding-right: 16px
+}
