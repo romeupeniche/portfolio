@@ -51,6 +51,7 @@ git clone [https://github.com/romeupeniche/portfolio.git](https://github.com/rom
 # Install dependencies
 npm install
 ```
+<br />
 <div align="center">
   <h1>🚀 Meu Portfólio Web</h1>
   
@@ -71,7 +72,9 @@ npm install
 
 ---
 
-## 🇧🇷 Sobre o Projeto
+<a name="pt-br"></a>
+## 🇧🇷 Português
+## 🎯 Sobre o Projeto
 Este portfólio foi desenvolvido para demonstrar minhas habilidades técnicas como Desenvolvedor Web, para ser meu espaço pessoal para organizar tudo o que venho construindo, as tecnologias que domino e a forma como resolvo problemas. Fiz questão de criar uma experiência fluida e satisfatória, onde consigo mostrar meus projetos e deixar meus contatos sempre à mão para quem quiser trocar uma ideia.
 
 ### 🛠 Tecnologias Utilizadas
