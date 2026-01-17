@@ -50,6 +50,9 @@ git clone https://github.com/romeupeniche/portfolio.git
 
 # Install dependencies
 npm install
+
+# Run development mode
+npm run dev
 ```
 <br />
 <div align="center">
@@ -100,8 +103,5 @@ git clone https://github.com/romeupeniche/portfolio.git
 npm install
 
 # Rode o modo de desenvolvimento
-npm run dev
-
-# Run development mode
 npm run dev
 
