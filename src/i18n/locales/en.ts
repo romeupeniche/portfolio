@@ -4,6 +4,7 @@ export const en = {
     tech_stack: "Tech Stack",
     projects: "Projects",
     contact: "Contact",
+    awards: "Awards",
     high: "HIGH",
   },
   hero: {
@@ -37,6 +38,13 @@ export const en = {
     livePreview: "Live Preview",
     sourceCode: "Source Code",
   },
+  awards: {
+    title: "Certificates & Awards",
+    course: "Course",
+    award: "Award",
+    verify: "Verify",
+    viewImage: "View Image",
+  },
   contact: {
     title: "Contact Me",
     start: "// Not sure where to start?",
@@ -52,9 +60,11 @@ export const en = {
     about: "About",
     tech: "Tools",
     projects: "Projects",
+    awards: "Awards",
     contact: "Contact",
-    contactMe: "// Let's grab a coffee?", // Ou "// Let's connect?"
+    contactMe: "// Let's grab a coffee?",
     available: "Available for new projects",
     developedWith: "Developed with ",
+    resume: "Resume",
   },
 };

@@ -4,7 +4,6 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
-        // --- Animações Originais (Hero / Photo) ---
         "pulse-slow": {
           "0%, 100%": { transform: "scale(1)", opacity: "0.7" },
           "50%": { transform: "scale(1.03)", opacity: "1" },
@@ -20,7 +19,6 @@ module.exports = {
           "100%": { left: "100%" },
         },
 
-        // --- Novas Animações do Botão Send ---
         spin: {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
@@ -81,12 +79,10 @@ module.exports = {
         },
       },
       animation: {
-        // --- Animações Originais ---
         "pulse-slow": "pulse-slow 3s ease-in-out infinite",
         "pulse-fast-short": "pulse-fast-short 0.8s ease-out 1",
         shine: "shine 1.5s ease-in-out infinite",
 
-        // --- Novas Animações do Botão Send ---
         "spin-slow": "spin 2s linear infinite",
         slideDown: "slideDown 0.8s ease forwards",
         wave: "wave 0.5s ease forwards",

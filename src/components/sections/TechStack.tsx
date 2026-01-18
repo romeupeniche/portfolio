@@ -34,13 +34,13 @@ const TechStack: React.FC = () => {
       )}
       <header className="z-1">
         {isLowPerf ? (
-          <h1 className="font-black lg:text-8xl text-5xl text-center text-white">
+          <h1 className="font-black lg:text-8xl text-5xl italic tracking-tighter text-center text-white">
             {t("tech_stack.title1")}
           </h1>
         ) : (
           <TextScrambleLoop
             phrases={[t("tech_stack.title1"), t("tech_stack.title2")]}
-            className="font-black lg:text-8xl text-5xl text-center text-white"
+            className="font-black italic tracking-tighter lg:text-8xl text-5xl text-center text-white"
           />
         )}
       </header>

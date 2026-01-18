@@ -219,13 +219,13 @@ const ProjectStage = ({ project, open, setOpen, children }: Props) => {
 
               <div className="flex flex-col gap-3 pt-6 border-t border-white/5">
                 <a
-                  href={project.link!}
+                  href={project.link ?? ""}
                   aria-disabled={project.deploy === "development"}
                   target="_blank"
                   rel="noreferrer"
                   className={`${
                     project.deploy === "development"
-                      ? "bg-white/30 pointer-events-none"
+                      ? "bg-white/30 cursor-not-allowed"
                       : "bg-white cursor-pointer hover:bg-light-blue transition-all active:scale-[0.98]"
                   } flex items-center justify-center gap-3 w-full py-4 uppercase text-black text-sm font-bold rounded-xl `}
                 >

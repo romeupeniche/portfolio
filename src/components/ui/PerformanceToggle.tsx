@@ -4,8 +4,8 @@ const PerformanceToggle = () => {
   const { t, isLowPerf, toggleLowPerf } = useSettingsStore();
 
   const colors = {
-    active: "#F59E0B", // Âmbar/Laranja para indicar o modo "Eco"
-    inactive: "#3C3B6E", // Mesma base do seu switch EN
+    active: "#F59E0B",
+    inactive: "#3C3B6E",
     textInactive: "#9CA3AF",
   };
 

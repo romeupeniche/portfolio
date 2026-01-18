@@ -38,6 +38,10 @@ const Header: React.FC = () => {
               onClick: () => scrollToSection("projects"),
             },
             {
+              text: t("header.awards"),
+              onClick: () => scrollToSection("awards"),
+            },
+            {
               text: t("header.contact"),
               onClick: () => scrollToSection("contact"),
             },
@@ -70,35 +74,6 @@ const Header: React.FC = () => {
           <PerformanceToggle />
           <LanguageSwitch />
         </nav>
-        {/* <nav
-          aria-label="Change Language"
-          className="flex flex-col w-1/16 h-8 overflow-hidden group rounded-xl"
-        >
-          <ul>
-            <li onClick={() => setLang("br")} className="select-none">
-              <img
-                src={brazil}
-                draggable={false}
-                className={`w-full object-cover transition-all cursor-pointer ${
-                  lang === "br"
-                    ? "h-6 group-hover:h-2 hover:h-6"
-                    : "h-2 group-hover:h-2 hover:h-6"
-                }`}
-              />
-            </li>
-            <li onClick={() => setLang("en")} className="select-none">
-              <img
-                src={english}
-                draggable={false}
-                className={`w-full object-cover transition-all cursor-pointer ${
-                  lang === "en"
-                    ? "h-6 group-hover:h-2 hover:h-6"
-                    : "h-2 group-hover:h-2 hover:h-6"
-                }`}
-              />
-            </li>
-          </ul>
-        </nav> */}
       </div>
     </header>
   );

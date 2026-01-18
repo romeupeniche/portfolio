@@ -4,11 +4,7 @@ const LinkedInLogo: React.FC<SVGProps<SVGSVGElement>> = (props) => {
   const { className, ...rest } = props;
 
   return (
-    <div
-    // href="https://linkedin.com/in/romeupeniche"
-    // target="_blank"
-    // rel="noopener noreferrer"
-    >
+    <div>
       <svg
         height="32px"
         width="32px"

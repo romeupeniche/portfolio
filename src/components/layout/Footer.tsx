@@ -5,6 +5,13 @@ import DownloadIcon from "../icons/DownloadIcon";
 import GithubLogo from "../icons/GithubIcon";
 import LinkedInLogo from "../icons/LinkedInIcon";
 
+const sections: ["about", "tech", "projects", "awards", "contact"] = [
+  "about",
+  "tech",
+  "projects",
+  "awards",
+  "contact",
+];
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { t } = useSettingsStore();
@@ -27,38 +34,54 @@ const Footer = () => {
               </p>
             </div>
 
-            <a
-              href="/cvs/br.pdf" // usar o lang para trocar entre a versao br e a versao en
-              download="CV_Romeu_Peniche.pdf"
-              className="group relative flex items-center justify-center gap-3 w-fit px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm font-medium transition-all duration-300 hover:bg-main-blue/10 hover:border-main-blue/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)]"
-            >
-              <DownloadIcon className="w-5 h-5 text-main-blue transition-transform group-hover:scale-110" />
-              <span>Download CV</span>
+            <div className="flex flex-col gap-3">
+              <p className="text-xs text-gray-500 font-medium uppercase tracking-widest ml-1">
+                {t("footer.resume")}
+              </p>
 
-              <div className="absolute inset-0 rounded-xl bg-main-blue/5 opacity-0 group-hover:opacity-100 blur-md transition-opacity"></div>
-            </a>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="/cvs/EN.pdf"
+                  download="CV_Romeu_Peniche_EN.pdf"
+                  className="group relative flex items-center gap-3 px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white text-xs font-medium transition-all hover:border-main-blue/50"
+                >
+                  <DownloadIcon className="w-4 h-4 transition-transform group-hover:scale-120 text-main-blue" />
+                  <span>English (PDF)</span>
+                </a>
+
+                <a
+                  href="/cvs/BR.pdf"
+                  download="CV_Romeu_Peniche_BR.pdf"
+                  className="group relative flex items-center gap-3 px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white text-xs font-medium transition-all hover:border-main-blue/50"
+                >
+                  <DownloadIcon className="w-4 h-4 transition-transform group-hover:scale-120 text-main-blue" />
+                  <span>Português (PDF)</span>
+                </a>
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col gap-4">
             <h3 className="text-white font-semibold uppercase tracking-wider text-sm italic">
               {t("footer.nav")}
             </h3>
-            <nav className="flex flex-col gap-2">
-              {["about", "tech-stack", "projects", "contact"].map((section) => (
-                <a
-                  key={section}
-                  onClick={() => scrollToSection(section)}
-                  className="text-gray-400 hover:text-main-blue transition-colors w-fit cursor-pointer capitalize"
-                >
-                  {section === "tech-stack"
-                    ? t("footer.tech")
-                    : section === "about"
-                    ? t("footer.about")
-                    : section === "projects"
-                    ? t("footer.projects")
-                    : t("footer.contact")}
-                </a>
-              ))}
+            <nav className="flex flex-wrap gap-8">
+              {Array.from(
+                { length: Math.ceil(sections.length / 3) },
+                (_, i) => (
+                  <div key={i} className="flex flex-col gap-2">
+                    {sections.slice(i * 3, i * 3 + 3).map((section) => (
+                      <a
+                        key={section}
+                        onClick={() => scrollToSection(section)}
+                        className="text-gray-400 hover:text-main-blue transition-colors w-fit cursor-pointer capitalize"
+                      >
+                        {t(`footer.${section}`)}
+                      </a>
+                    ))}
+                  </div>
+                ),
+              )}
             </nav>
           </div>
 

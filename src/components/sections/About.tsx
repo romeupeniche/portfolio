@@ -40,7 +40,9 @@ const About: React.FC = () => {
       className="h-lvh min-h-[800px] bg-linear-to-b from-transparent to-black-blue p-12 flex flex-col justify-center"
       id="about"
     >
-      <h1 className="font-black text-8xl text-center">{t("about_me.title")}</h1>
+      <h1 className="font-black italic tracking-tighter text-8xl text-center">
+        {t("about_me.title")}
+      </h1>
       <main className="flex items-center justify-between gap-14">
         <img src={child} className="w-xs rounded-full" />
         <p className="text-2xl font-medium tracking-tighter">

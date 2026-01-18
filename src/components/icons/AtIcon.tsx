@@ -4,12 +4,7 @@ const AtIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
   const { className, ...rest } = props;
 
   return (
-    <div
-      // href="mailto:romeupeniche12@hotmail.com"
-      // target="_blank"
-      // rel="noopener noreferrer"
-      className="rounded-full"
-    >
+    <div className="rounded-full">
       <svg
         className={`rounded-full ${className}`}
         width="32px"

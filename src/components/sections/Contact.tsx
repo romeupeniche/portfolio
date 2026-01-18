@@ -16,7 +16,7 @@ const Contact: React.FC = () => {
     >
       <header className="flex flex-row xl:justify-between items-center justify-end">
         <img src={dottedSendMessage} className="w-xl hidden xl:inline-block" />
-        <h1 className="font-black lg:text-8xl text-5xl text-right text-nowrap">
+        <h1 className="italic tracking-tighter font-black lg:text-8xl text-5xl text-right text-nowrap">
           {t("contact.title")}
         </h1>
       </header>

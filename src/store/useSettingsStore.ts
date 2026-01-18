@@ -8,7 +8,6 @@ interface SettingsState {
   isLowPerf: boolean;
   setLang: (lang: Language) => void;
   toggleLowPerf: () => void;
-  // Função de tradução exposta pelo store
   t: (key: TranslationKeys, vars?: Record<string, string>) => string;
 }
 
@@ -23,12 +22,12 @@ export const useSettingsStore = create<SettingsState>()(
       toggleLowPerf: () => set((state) => ({ isLowPerf: !state.isLowPerf })),
 
       t: (key, vars = {}) => {
-        const { lang } = get(); // Pega o idioma atual do store
+        const { lang } = get();
         return translate(lang, key, vars);
       },
     }),
     {
-      name: "user-settings", // Nome da chave no localStorage
-    }
-  )
+      name: "user-settings",
+    },
+  ),
 );

@@ -1,7 +1,6 @@
 import { useSettingsStore } from "../../store/useSettingsStore";
 
 const LanguageSwitch = () => {
-  // const [isBR, setIsBR] = useState(false);
   const { lang, setLang } = useSettingsStore();
 
   const colors = {

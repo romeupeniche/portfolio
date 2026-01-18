@@ -136,11 +136,11 @@ const Hero: React.FC = () => {
 
           {!isLowPerf && (
             <>
-              <div className="absolute inset-0 rounded-full ring-2 ring-blue-500/20 animate-pulse-slow"></div>
+              <div className="absolute inset-0 rounded-full ring-2 ring-light-blue/20 animate-pulse-slow"></div>
               <div
                 className={`absolute inset-0 bg-linear-to-br transition-all duration-700 ${
                   isHoveringPhoto ? "opacity-30" : "opacity-0"
-                } from-blue-500/20 via-transparent to-cyan-500/20`}
+                } from-light-blue/20 via-transparent to-cyan-500/20`}
               ></div>
             </>
           )}
@@ -159,7 +159,7 @@ const Hero: React.FC = () => {
           <>
             <TextScrambleLoop
               phrases={titlePhrases}
-              className="font-black text-5xl lg:text-7xl w-full mb-4 leading-tight text-white drop-shadow-md"
+              className="font-black italic tracking-tight text-5xl lg:text-8xl w-full mb-4 leading-tight text-white drop-shadow-md"
             />
 
             <TextScrambleLoop

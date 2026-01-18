@@ -19,11 +19,8 @@ const Projects: React.FC = () => {
       className="bg-black-blue h-lvh min-h-[800px] p-12 flex flex-col gap-4"
     >
       <header className="flex flex-row items-center justify-between">
-        <h2 className="lg:text-8xl text-5xl font-black text-white italic uppercase tracking-tighter">
-          {t("projects.title").split(" ")[0]}
-          <span className="text-light-blue">
-            {t("projects.title").split(" ")[1]}
-          </span>
+        <h2 className="lg:text-8xl text-5xl font-black text-white italic tracking-tighter">
+          {t("projects.title")}
         </h2>
         <img src={rocket} className="w-50 hidden xl:inline-block" />
       </header>
@@ -77,24 +74,7 @@ const Projects: React.FC = () => {
                     className="select-none w-full rounded-xl transition-all cursor-pointer duration-300 hover:shadow-white hover:scale-102 hover:transform hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]"
                   />
                 </div>
-                {/* <section className="flex gap-4 justify-evenly items-center mt-4">
-                  {mainTechUsed.map((techId) => {
-                    const tech = techData
-                      .flatMap((category) => category.items)
-                      .find((item) => item.id === techId);
 
-                    if (!tech) return null;
-                    const { icon: Icon } = tech;
-
-                    return (
-                      <Icon
-                        key={techId}
-                        className="w-10 h-10 text-dark-blue hover:text-white transition cursor-pointer"
-                        onClick={() => scrollToSection("tech-stack")}
-                      />
-                    );
-                  })}
-                </section> */}
                 <footer className="mt-auto flex justify-between items-center">
                   <div className="flex gap-4 items-center">
                     {mainTechUsed.map((techId) => {

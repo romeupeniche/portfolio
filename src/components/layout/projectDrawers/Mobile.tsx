@@ -12,7 +12,7 @@ const Mobile: React.FC<{ project: IProject }> = ({ project }) => {
     setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
   const prevImage = () =>
     setCurrentImageIndex(
-      (prev) => (prev - 1 + project.images.length) % project.images.length
+      (prev) => (prev - 1 + project.images.length) % project.images.length,
     );
 
   useEffect(() => {
@@ -126,7 +126,7 @@ const Mobile: React.FC<{ project: IProject }> = ({ project }) => {
               ({ body, title }, i) => (
                 <div
                   key={i}
-                  className="group border-l-2 border-white/5 hover:border-blue-500/50 pl-4 transition-colors"
+                  className="group border-l-2 border-white/5 hover:border-light-blue/50 pl-4 transition-colors"
                 >
                   <h5 className="text-white text-sm font-bold mb-1 transition-colors group-hover:text-light-blue">
                     {title}
@@ -135,7 +135,7 @@ const Mobile: React.FC<{ project: IProject }> = ({ project }) => {
                     {body}
                   </p>
                 </div>
-              )
+              ),
             )}
           </div>
         </div>

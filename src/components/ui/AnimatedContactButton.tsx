@@ -1,7 +1,7 @@
 import type { ElementType } from "react";
 
 const colorVariants: Record<string, string> = {
-  blue: "border-blue-500/30 hover:shadow-blue-500/20 hover:border-blue-500/60 hover:from-blue-500/10 via-blue-400/10 text-blue-500 group-hover:text-blue-400",
+  blue: "border-light-blue/30 hover:shadow-light-blue/20 hover:border-light-blue/60 hover:from-light-blue/10 via-blue-400/10 text-light-blue group-hover:text-blue-400",
   green:
     "border-green-500/30 hover:shadow-green-500/20 hover:border-green-500/60 hover:from-green-500/10 via-green-400/10 text-green-500 group-hover:text-green-400",
   indigo:

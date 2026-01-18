@@ -37,7 +37,7 @@ const Icons = {
       <path d="M6 12v5c3 3 9 3 12 0v-5" />
     </svg>
   ),
-  External: () => (
+  External: ({ className }: { className?: string }) => (
     <svg
       width="14"
       height="14"
@@ -45,29 +45,33 @@ const Icons = {
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
+      className={className}
     >
       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
     </svg>
   ),
 };
 
-const parseDate = (dateObj: { en: string; br: string }) => {
-  return new Date(dateObj.en).getTime();
-};
-
 const Certifications = () => {
-  const { lang } = useSettingsStore();
+  const { lang, t } = useSettingsStore();
   const scrollRef = useHorizontalScroll<HTMLDivElement>();
 
   const sortedCertifications = [...certifications].sort(
-    (a, b) => parseDate(b.issueDate) - parseDate(a.issueDate),
+    (a, b) => b.date.getTime() - a.date.getTime(),
   );
 
   return (
-    <section className="py-20 px-4 md:px-10 mx-auto bg-black-blue overflow-hidden">
+    <section
+      id="awards"
+      className="py-20 px-4 md:px-10 mx-auto bg-black-blue overflow-hidden"
+    >
       <header className="mb-12 mx-auto">
-        <h2 className="text-8xl font-black text-white italic uppercase tracking-tighter">
-          Certificates <span className="text-light-blue">&</span> Awards
+        <h2 className="text-8xl font-black text-white italic tracking-tighter">
+          {t("awards.title").split(" ")[0]}{" "}
+          <span className="text-light-blue">
+            {t("awards.title").split(" ")[1]}
+          </span>{" "}
+          {t("awards.title").split(" ")[2]}
         </h2>
       </header>
 
@@ -77,14 +81,14 @@ const Certifications = () => {
       >
         {sortedCertifications.map((cert, index) => (
           <motion.div
-            key={cert.credentialId || cert.title}
+            key={cert.title}
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}
             viewport={{ once: true }}
             className="group relative flex-none w-[350px] md:w-[450px] flex flex-col snap-start border border-white/5 rounded-2xl overflow-hidden hover:border-light-blue/50 transition-all duration-500"
           >
-            <div className="absolute top-4 left-4 z-10">
+            <div className="absolute top-4 left-4 z-1 flex">
               <div
                 className={`flex items-center gap-2 px-3 py-1 rounded-full border backdrop-blur-md ${
                   cert.type === "award"
@@ -94,9 +98,12 @@ const Certifications = () => {
               >
                 {cert.type === "award" ? <Icons.Award /> : <Icons.Course />}
                 <span className="text-[10px] font-mono uppercase font-bold tracking-widest">
-                  {cert.type}
+                  {t(`awards.${cert.type}`)}
                 </span>
               </div>
+            </div>
+            <div className="absolute top-5 right-4 z-1 flex">
+              <Icons.External className="w-5 h-5 text-white/20" />
             </div>
 
             <a
@@ -116,7 +123,7 @@ const Certifications = () => {
             <div className="p-6 flex flex-col flex-1">
               <div className="mb-4">
                 <span className="text-[10px] font-mono text-white/30 uppercase tracking-widest">
-                  {cert.issuer} • {cert.issueDate[lang]}
+                  {cert.issuer} • {cert.displayDate[lang]}
                 </span>
                 <h3 className="text-xl font-bold text-white mt-1 leading-tight group-hover:text-light-blue transition-colors line-clamp-2">
                   {cert.title}
@@ -141,9 +148,7 @@ const Certifications = () => {
 
               <div className="h-10 pt-4 border-t border-white/5 flex items-center justify-between gap-4">
                 <span className="text-[9px] font-mono text-white/20 line-clamp-2">
-                  {cert.credentialId
-                    ? `ID: ${cert.credentialId}`
-                    : cert.description?.[lang]}
+                  {cert.description[lang]}
                 </span>
                 <a
                   href={cert.credentialUrl || cert.img}
@@ -151,7 +156,9 @@ const Certifications = () => {
                   rel="noreferrer"
                   className="flex items-center shrink-0 text-nowrap gap-2 text-[10px] font-mono text-light-blue hover:text-white transition-colors uppercase"
                 >
-                  {cert.credentialUrl ? "Verify" : "View Image"}{" "}
+                  {cert.credentialUrl
+                    ? t("awards.verify")
+                    : t("awards.viewImage")}{" "}
                   <Icons.External />
                 </a>
               </div>

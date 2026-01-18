@@ -94,11 +94,6 @@ export const techData: ITechData[] = [
         id: "tailwind",
         icon: tailwind,
       },
-      // {
-      //   title: "Zustand",
-      //   id: "zustand",
-      //   icon: ZustandRepIcon,
-      // },
       {
         title: "Next JS",
         id: "nextjs",

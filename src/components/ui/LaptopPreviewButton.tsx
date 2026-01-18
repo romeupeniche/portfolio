@@ -3,7 +3,7 @@ import PreviewIcon from "../../assets/icons/PreviewIcon";
 const LaptopPreviewButton = ({
   onClick,
   screenImage,
-  disabled = false, // Nova prop com valor padrão
+  disabled = false,
 }: {
   onClick?: () => void;
   screenImage: string;
@@ -17,11 +17,10 @@ const LaptopPreviewButton = ({
             ? "cursor-not-allowed opacity-60 grayscale"
             : "group cursor-pointer"
         }`}
-      onClick={!disabled ? onClick : undefined} // Desabilita o clique se estiver disabled
+      onClick={!disabled ? onClick : undefined}
     >
       <div className="scale-[0.18] shrink-0 origin-center transition-transform duration-500">
         <div className="relative w-64 perspective-[1500px]">
-          {/* Ícone do Olho - No disabled ele fica fixo e cinza */}
           <div
             className={`absolute inset-0 flex items-center justify-center z-30 transition-all duration-300
             ${
@@ -34,12 +33,11 @@ const LaptopPreviewButton = ({
               className={`w-50 h-50 ${
                 disabled
                   ? "text-zinc-500 fill-zinc-600"
-                  : "text-blue-500/80 fill-light-blue"
+                  : "text-light-blue/80 fill-light-blue"
               }`}
             />
           </div>
 
-          {/* TELA (SCREEN) - Só anima se NÃO estiver disabled */}
           <div
             className={`relative z-20 overflow-hidden rounded-t-3xl bg-zinc-950 p-3 
                         transition-all duration-400 ease-in-out origin-bottom
@@ -66,10 +64,9 @@ const LaptopPreviewButton = ({
               )}
             </div>
 
-            <div className="absolute inset-x-10 bottom-0 h-4 bg-blue-500/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <div className="absolute inset-x-10 bottom-0 h-4 bg-light-blue/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
           </div>
 
-          {/* BASE DO LAPTOP */}
           <div className="relative -mx-10 z-10">
             <div
               className={`relative h-6 w-full rounded-b-3xl bg-linear-to-r from-zinc-800 via-zinc-950 to-zinc-800 shadow-2xl 
@@ -84,9 +81,8 @@ const LaptopPreviewButton = ({
             </div>
           </div>
 
-          {/* Sombra no chão - Somente se não estiver disabled */}
           {!disabled && (
-            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-40 h-8 bg-blue-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-40 h-8 bg-light-blue/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           )}
         </div>
       </div>

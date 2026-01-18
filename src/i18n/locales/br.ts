@@ -4,6 +4,7 @@ export const br = {
     tech_stack: "Tecnologias",
     projects: "Projetos",
     contact: "Contato",
+    awards: "Prêmios",
     high: "ALTO",
   },
   hero: {
@@ -37,6 +38,13 @@ export const br = {
     sourceCode: "Código Fonte",
     livePreview: "Visualizar Projeto",
   },
+  awards: {
+    title: "Certificados & Prêmios",
+    course: "Curso",
+    award: "Prêmio",
+    verify: "Verificar",
+    viewImage: "Ver Imagem",
+  },
   contact: {
     title: "Fale Comigo",
     start: "// Não sabe por onde começar?",
@@ -52,9 +60,11 @@ export const br = {
     about: "Sobre",
     tech: "Ferramentas",
     projects: "Projetos",
+    awards: "Prêmios",
     contact: "Contato",
     contactMe: "// Bora trocar ideia?",
     available: "Disponível para novos projetos",
     developedWith: "Desenvolvido com ",
+    resume: "Currículo",
   },
 };
