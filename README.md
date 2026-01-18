@@ -46,10 +46,13 @@ This portfolio was developed to showcase my technical skills as a Web Developer,
 ### 📥 Installation
 ```bash
 # Clone the repository
-git clone [https://github.com/romeupeniche/portfolio.git](https://github.com/romeupeniche/portfolio.git)
+git clone https://github.com/romeupeniche/portfolio.git
 
 # Install dependencies
 npm install
+
+# Run development mode
+npm run dev
 ```
 <br />
 <div align="center">
@@ -94,14 +97,11 @@ Este portfólio foi desenvolvido para demonstrar minhas habilidades técnicas co
 ### 📥 Instalação e Execução
 ```bash
 # Clone o repositório
-git clone [https://github.com/romeupeniche/portfolio.git](https://github.com/romeupeniche/portfolio.git)
+git clone https://github.com/romeupeniche/portfolio.git
 
 # Instale as dependências
 npm install
 
 # Rode o modo de desenvolvimento
-npm run dev
-
-# Run development mode
 npm run dev
 
