@@ -19,9 +19,12 @@ const Projects: React.FC = () => {
       className="bg-black-blue h-lvh min-h-[800px] p-12 flex flex-col gap-4"
     >
       <header className="flex flex-row items-center justify-between">
-        <h1 className="font-black lg:text-8xl text-5xl">
-          {t("projects.title")}
-        </h1>
+        <h2 className="lg:text-8xl text-5xl font-black text-white italic uppercase tracking-tighter">
+          {t("projects.title").split(" ")[0]}
+          <span className="text-light-blue">
+            {t("projects.title").split(" ")[1]}
+          </span>
+        </h2>
         <img src={rocket} className="w-50 hidden xl:inline-block" />
       </header>
       <nav className="flex h-full items-stretch gap-4">

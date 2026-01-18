@@ -120,8 +120,8 @@ const ProjectStage = ({ project, open, setOpen, children }: Props) => {
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                      <span className="text-[10px] font-mono text-blue-500 uppercase tracking-[0.2em]">
+                      <div className="w-2 h-2 rounded-full bg-light-blue animate-pulse" />
+                      <span className="text-[10px] font-mono text-light-blue uppercase tracking-[0.2em]">
                         {t("projects.projectDetails")}
                       </span>
                     </div>
@@ -153,8 +153,8 @@ const ProjectStage = ({ project, open, setOpen, children }: Props) => {
                   </header>
                   <div className="flex flex-col gap-2">
                     <p
-                      className={`text-gray-400 text-sm leading-relaxed transition-all duration-300 ${
-                        !isExpanded ? "line-clamp-4" : ""
+                      className={`text-gray-400 text-sm leading-relaxed ${
+                        !isExpanded ? "line-clamp-4" : "pr-2"
                       }`}
                     >
                       {project.description[lang]}
@@ -162,7 +162,7 @@ const ProjectStage = ({ project, open, setOpen, children }: Props) => {
 
                     <button
                       onClick={() => setIsExpanded(!isExpanded)}
-                      className="text-[10px] font-mono text-blue-500 hover:text-white transition-colors w-fit tracking-tighter cursor-pointer"
+                      className="text-[10px] font-mono text-light-blue hover:text-white transition-colors w-fit tracking-tighter cursor-pointer"
                     >
                       {isExpanded ? "[ ↑ ]" : "[ ... ]"}
                     </button>
@@ -322,7 +322,7 @@ const ProjectStage = ({ project, open, setOpen, children }: Props) => {
         </motion.div>
       )}
     </AnimatePresence>,
-    document.body
+    document.body,
   );
 };
 

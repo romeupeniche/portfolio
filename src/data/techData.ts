@@ -14,7 +14,6 @@ import type { FC, SVGProps } from "react";
 import HTMLIcon from "../assets/tech-stack/HTMLIcon.tsx";
 import CSSIcon from "../assets/tech-stack/CSSIcon.tsx";
 import JavaScriptIcon from "../assets/tech-stack/JavaScriptIcon.tsx";
-import ZustandRepIcon from "../assets/tech-stack/ZustandRepIcon.tsx";
 
 export interface ITechData {
   col: number;
@@ -101,8 +100,8 @@ export const techData: ITechData[] = [
       //   icon: ZustandRepIcon,
       // },
       {
-        title: "Next",
-        id: "next",
+        title: "Next JS",
+        id: "nextjs",
         icon: next,
       },
       {

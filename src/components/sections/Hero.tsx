@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import TextScrambleLoop from "../ui/TextScramble";
-import profile from "../../assets/photos/profile2.png";
+import profile from "../../assets/photos/profile.png";
 import AnimatedMessageButton from "../ui/AnimatedMessageButton";
 import { useSettingsStore } from "../../store/useSettingsStore";
 import type { TranslationKeys } from "../../types/i18n";
@@ -9,10 +9,10 @@ const fetchPhrases = (
   t: (key: TranslationKeys) => string,
   _: string,
   prefix: string,
-  count: number
+  count: number,
 ) => {
   return Array.from({ length: count }, (_, i) =>
-    t(`hero.${prefix}_${i}` as TranslationKeys)
+    t(`hero.${prefix}_${i}` as TranslationKeys),
   );
 };
 const Hero: React.FC = () => {
@@ -22,11 +22,11 @@ const Hero: React.FC = () => {
 
   const titlePhrases = useMemo(
     () => fetchPhrases(t, lang, "title", 4),
-    [t, lang]
+    [t, lang],
   );
   const subtitlePhrases = useMemo(
     () => fetchPhrases(t, lang, "subtitle", 3),
-    [t, lang]
+    [t, lang],
   );
 
   useEffect(() => {
@@ -105,7 +105,6 @@ const Hero: React.FC = () => {
       id="hero"
       className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden text-white"
     >
-      {/* O Canvas some completamente no modo Eco para poupar GPU */}
       {!isLowPerf && (
         <canvas
           ref={canvasRef}
@@ -117,11 +116,7 @@ const Hero: React.FC = () => {
         <div
           className={`relative w-48 h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden mb-8 border border-white/10
           will-change-transform 
-          ${
-            isLowPerf
-              ? "shadow-none"
-              : "backdrop-blur-[6px] shadow-2xl hover:border-blue-400/30"
-          }
+          ${isLowPerf ? "shadow-none" : "bg-black/20 shadow-2xl hover:border-blue-400/30"}
           group transition-all duration-500 transform hover:scale-105`}
           onMouseEnter={() => setIsHoveringPhoto(true)}
           onMouseLeave={() => setIsHoveringPhoto(false)}
@@ -143,7 +138,7 @@ const Hero: React.FC = () => {
             <>
               <div className="absolute inset-0 rounded-full ring-2 ring-blue-500/20 animate-pulse-slow"></div>
               <div
-                className={`absolute inset-0 bg-gradient-to-br transition-all duration-700 ${
+                className={`absolute inset-0 bg-linear-to-br transition-all duration-700 ${
                   isHoveringPhoto ? "opacity-30" : "opacity-0"
                 } from-blue-500/20 via-transparent to-cyan-500/20`}
               ></div>
@@ -163,13 +158,11 @@ const Hero: React.FC = () => {
         ) : (
           <>
             <TextScrambleLoop
-              // key={`title-${lang}`}
               phrases={titlePhrases}
               className="font-black text-5xl lg:text-7xl w-full mb-4 leading-tight text-white drop-shadow-md"
             />
 
             <TextScrambleLoop
-              // key={`subtitle-${lang}`}
               phrases={subtitlePhrases}
               className="font-light text-xl lg:text-2xl text-white/80 max-w-2xl mb-8 drop-shadow-sm"
             />
