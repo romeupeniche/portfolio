@@ -14,10 +14,15 @@ import tr_delivery from "../assets/projects-images/trevo/delivery.png";
 import tr_login from "../assets/projects-images/trevo/login.png";
 import tr_product from "../assets/projects-images/trevo/product.png";
 import tr_settings from "../assets/projects-images/trevo/settings.png";
+// Portfolio Images
+import pf_main from "../assets/projects-images/portfolio/main.jpeg";
+import pf_hero from "../assets/projects-images/portfolio/hero.png";
 // Other
 import FootyShirtsIcon from "../components/icons/FootyShirtsIcon";
 import type { ElementType } from "react";
 import TrevoIcon from "../components/icons/TrevoIcon";
+import PortfolioIcon from "../components/icons/PortfolioIcon";
+import GameIcon from "../components/icons/GameIcon";
 
 type LocalizedText = { en: string; br: string };
 type ImagesDescription = {
@@ -676,6 +681,148 @@ export const PROJECTS_DATA: IProject[] = [
               {
                 title: "Funcionalidades Principais",
                 body: "Oferece recursos ativos, incluindo um fluxo de logout seguro com modais de confirmação e um seletor de idiomas para internacionalização total do app.",
+              },
+            ],
+          },
+        },
+      },
+    ],
+  },
+  {
+    id: "portfolio",
+    icon: PortfolioIcon,
+    title: "Portfolio",
+    link: "/",
+    githubURL: "https://github.com/romeupeniche/portfolio",
+    platform: "web",
+    description: {
+      en: "A high-performance personal portfolio designed to showcase software engineering projects with a focus on clean architecture and exceptional UX. Built with React and TypeScript, it features a bespoke design system, fluid animations, and a focus on scannability. The project demonstrates the integration of complex SVG manipulation, responsive layouts, and a modular component structure, serving as a living document of my technical evolution and design philosophy.",
+      br: "Um portfólio pessoal de alta performance desenvolvido para apresentar projetos de engenharia de software com foco em arquitetura limpa e UX excepcional. Construído com React e TypeScript, apresenta um design system próprio, animações fluidas e foco em escaneabilidade. O projeto demonstra a integração de manipulação complexa de SVGs, layouts responsivos e uma estrutura de componentes modulares, servindo como um documento vivo da minha evolução técnica e filosofia de design.",
+    },
+    period: {
+      en: "Dec 2025 - Jan 2026",
+      br: "Dez 2025 - Jan 2026",
+    },
+    type: {
+      en: "Personal Portfolio & Design System",
+      br: "Portfólio Pessoal & Design System",
+    },
+    mainTechUsed: ["react", "typescript", "tailwind", "zustand"],
+    extraTechUsed: ["I18n", "Framer Motion"],
+    deploy: "netlify",
+    heroImage: pf_hero,
+    images: [
+      {
+        title: {
+          en: "Home Page",
+          br: "Página Inicial",
+        },
+        img: pf_main,
+        description: {
+          en: {
+            title:
+              "This landing page is the entry point to the e-commerce experience, built for performance and user conversion.",
+            bullets: [
+              {
+                title: "Featured & Conversion Focus",
+                body: "Dynamic Hero section showcasing a featured product and new releases with clear CTAs, driving immediate user engagement.",
+              },
+              {
+                title: "Intuitive UX",
+                body: "Includes an interactive, data-driven Size Guide and a dedicated Customer Reviews section, designed to build trust and simplify the purchasing decision.",
+              },
+              {
+                title: "Robust Structure",
+                body: "The page features reusable components (FAQ, Reviews, and Footer navigation) demonstrating a scalable and clean component architecture.",
+              },
+            ],
+          },
+          br: {
+            title:
+              "Esta landing page é o ponto de entrada da experiência de e-commerce, arquitetada para alta performance e conversão de usuários.",
+            bullets: [
+              {
+                title: "Destaque e Conversão",
+                body: "Seção Hero dinâmica apresentando um produto em destaque e novos lançamentos com CTAs claros, visando engajamento imediato.",
+              },
+              {
+                title: "UX Intuitiva",
+                body: "Implementação de um Guia de Tamanhos interativo (baseado em dados reais) e uma seção de Avaliações de Clientes, focados em construir confiança e simplificar a decisão de compra.",
+              },
+              {
+                title: "Estrutura Robusta",
+                body: "A página utiliza componentes reutilizáveis (FAQ, Reviews e navegação do Rodapé) demonstrando uma arquitetura de componentes limpa e escalável.",
+              },
+            ],
+          },
+        },
+      },
+    ],
+  },
+  {
+    id: "hollowkey",
+    icon: GameIcon,
+    title: "Hollow Key",
+    link: "",
+    githubURL: "https://github.com/romeupeniche/hollowkey",
+    platform: "web",
+    description: {
+      en: "A high-performance personal portfolio designed to showcase software engineering projects with a focus on clean architecture and exceptional UX. Built with React and TypeScript, it features a bespoke design system, fluid animations, and a focus on scannability. The project demonstrates the integration of complex SVG manipulation, responsive layouts, and a modular component structure, serving as a living document of my technical evolution and design philosophy.",
+      br: "Um portfólio pessoal de alta performance desenvolvido para apresentar projetos de engenharia de software com foco em arquitetura limpa e UX excepcional. Construído com React e TypeScript, apresenta um design system próprio, animações fluidas e foco em escaneabilidade. O projeto demonstra a integração de manipulação complexa de SVGs, layouts responsivos e uma estrutura de componentes modulares, servindo como um documento vivo da minha evolução técnica e filosofia de design.",
+    },
+    period: {
+      en: "Dec 2025 - Jan 2026",
+      br: "Dez 2025 - Jan 2026",
+    },
+    type: {
+      en: "Personal Portfolio & Design System",
+      br: "Portfólio Pessoal & Design System",
+    },
+    mainTechUsed: ["python"],
+    extraTechUsed: ["Pygame"],
+    deploy: "netlify",
+    heroImage: pf_hero,
+    images: [
+      {
+        title: {
+          en: "Home Page",
+          br: "Página Inicial",
+        },
+        img: pf_main,
+        description: {
+          en: {
+            title:
+              "This landing page is the entry point to the e-commerce experience, built for performance and user conversion.",
+            bullets: [
+              {
+                title: "Featured & Conversion Focus",
+                body: "Dynamic Hero section showcasing a featured product and new releases with clear CTAs, driving immediate user engagement.",
+              },
+              {
+                title: "Intuitive UX",
+                body: "Includes an interactive, data-driven Size Guide and a dedicated Customer Reviews section, designed to build trust and simplify the purchasing decision.",
+              },
+              {
+                title: "Robust Structure",
+                body: "The page features reusable components (FAQ, Reviews, and Footer navigation) demonstrating a scalable and clean component architecture.",
+              },
+            ],
+          },
+          br: {
+            title:
+              "Esta landing page é o ponto de entrada da experiência de e-commerce, arquitetada para alta performance e conversão de usuários.",
+            bullets: [
+              {
+                title: "Destaque e Conversão",
+                body: "Seção Hero dinâmica apresentando um produto em destaque e novos lançamentos com CTAs claros, visando engajamento imediato.",
+              },
+              {
+                title: "UX Intuitiva",
+                body: "Implementação de um Guia de Tamanhos interativo (baseado em dados reais) e uma seção de Avaliações de Clientes, focados em construir confiança e simplificar a decisão de compra.",
+              },
+              {
+                title: "Estrutura Robusta",
+                body: "A página utiliza componentes reutilizáveis (FAQ, Reviews e navegação do Rodapé) demonstrando uma arquitetura de componentes limpa e escalável.",
               },
             ],
           },

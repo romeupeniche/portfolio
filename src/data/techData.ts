@@ -14,6 +14,7 @@ import type { FC, SVGProps } from "react";
 import HTMLIcon from "../assets/tech-stack/HTMLIcon.tsx";
 import CSSIcon from "../assets/tech-stack/CSSIcon.tsx";
 import JavaScriptIcon from "../assets/tech-stack/JavaScriptIcon.tsx";
+import ZustandIcon from "../assets/tech-stack/ZustandIcon.tsx";
 
 export interface ITechData {
   col: number;
@@ -80,6 +81,11 @@ export const techData: ITechData[] = [
     rowEnd3: true,
     items: [
       {
+        title: "Tailwind",
+        id: "tailwind",
+        icon: tailwind,
+      },
+      {
         title: "React Native",
         id: "reactnative",
         icon: reactnative,
@@ -90,9 +96,9 @@ export const techData: ITechData[] = [
         icon: nestjs,
       },
       {
-        title: "Tailwind",
-        id: "tailwind",
-        icon: tailwind,
+        title: "Zustand",
+        id: "zustand",
+        icon: ZustandIcon,
       },
       {
         title: "Next JS",

@@ -24,7 +24,8 @@ const Projects: React.FC = () => {
         </h2>
         <img src={rocket} className="w-50 hidden xl:inline-block" />
       </header>
-      <nav className="flex h-full items-stretch gap-4">
+      {/* <nav className="flex h-full items-stretch gap-4"> */}
+      <nav className="flex h-full items-stretch gap-4 overflow-x-auto custom-scrollbar">
         {/* da pra adicionar um justify-center quando adicionar mais um projeto */}
         {PROJECTS_DATA.map((project) => {
           const {
@@ -50,7 +51,7 @@ const Projects: React.FC = () => {
           const setIsDrawerOpen = (open: boolean) =>
             setOpenProjectId(open ? id : null);
           return (
-            <nav key={id}>
+            <nav key={id} className="shrink-0">
               <GlassDiv>
                 <header className="flex items-center justify-between">
                   <span className="group">
@@ -64,7 +65,9 @@ const Projects: React.FC = () => {
                       </h4>
                     </div>
                   </span>
-                  <Icon className="h-full w-auto p-2" />
+                  <Icon
+                    className={`h-full w-auto p-2 ${id === "portfolio" && "text-light-blue"}`}
+                  />
                 </header>
                 <div className="w-full h-[50vh] overflow-hidden">
                   <img

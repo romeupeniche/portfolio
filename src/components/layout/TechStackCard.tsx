@@ -1,7 +1,6 @@
 import React from "react";
 import { PROJECTS_DATA } from "../../data/projectsData";
 import type { ITechData } from "../../data/techData";
-import PersonIcon from "../icons/PersonIcon";
 import { useSettingsStore } from "../../store/useSettingsStore";
 
 const TechStackCard: React.FC<{ techObj: ITechData; id?: string }> = ({
@@ -29,14 +28,9 @@ const TechStackCard: React.FC<{ techObj: ITechData; id?: string }> = ({
       </h2>
       <ul className="flex flex-row justify-evenly">
         {items.map(({ title, icon: SvgIcon, id }, idx) => {
-          const filteredProjects = [
-            ...PROJECTS_DATA,
-            {
-              mainTechUsed: ["react", "typescript", "tailwind"],
-              id: "portfolio",
-              icon: PersonIcon,
-            },
-          ].filter(({ mainTechUsed }) => mainTechUsed.includes(id));
+          const filteredProjects = PROJECTS_DATA.filter(({ mainTechUsed }) =>
+            mainTechUsed.includes(id),
+          );
 
           return (
             <li key={idx} className="flex flex-col items-center gap-2">
