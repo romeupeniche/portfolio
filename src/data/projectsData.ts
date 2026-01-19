@@ -13,6 +13,7 @@ import tr_confirmation from "../assets/projects-images/trevo/confirmation.png";
 import tr_delivery from "../assets/projects-images/trevo/delivery.png";
 import tr_login from "../assets/projects-images/trevo/login.png";
 import tr_product from "../assets/projects-images/trevo/product.png";
+import tr_settings from "../assets/projects-images/trevo/settings.png";
 // Other
 import FootyShirtsIcon from "../components/icons/FootyShirtsIcon";
 import type { ElementType } from "react";
@@ -412,6 +413,141 @@ export const PROJECTS_DATA: IProject[] = [
       },
       {
         title: {
+          en: "Order Details",
+          br: "Sumário",
+        },
+        img: tr_delivery,
+        description: {
+          en: {
+            title:
+              "This order details page provides granular visibility into specific delivery items, accessible directly via the dashboard's info button.",
+            bullets: [
+              {
+                title: "Detailed Inventory Checklist",
+                body: "Displays product images, specific quantities, and aggregate metrics such as total weight (e.g., 60.12 kg) and package counts to ensure accurate inventory management.",
+              },
+              {
+                title: "Persistent Location Insights",
+                body: "Integrates a persistent notes system that allows drivers to save unique annotations for a location or view existing order observations to streamline future visits.",
+              },
+              {
+                title: "Operational Quality Control",
+                body: "Includes quick-action buttons for capturing photographic proof of delivery (signed documents) and a reporting tool for flagging incorrect addresses or system discrepancies.",
+              },
+            ],
+          },
+          br: {
+            title:
+              "Esta página de detalhes do pedido fornece visibilidade granular sobre itens de entrega específicos, acessível diretamente através do botão de informações do dashboard.",
+            bullets: [
+              {
+                title: "Checklist de Inventário Detalhado",
+                body: "Exibe imagens dos produtos, quantidades específicas e métricas agregadas, como peso total (ex: 60,12 kg) e contagem de volumes para garantir a gestão precisa do estoque.",
+              },
+              {
+                title: "Insights Persistentes de Localização",
+                body: "Integra um sistema de notas persistentes que permite aos motoristas salvar anotações exclusivas para um local ou visualizar observações existentes do pedido para agilizar visitas futuras.",
+              },
+              {
+                title: "Controle de Qualidade Operacional",
+                body: "Inclui botões de ação rápida para captura de prova fotográfica de entrega e uma ferramenta de reporte para sinalizar endereços incorretos ou discrepâncias do sistema.",
+              },
+            ],
+          },
+        },
+      },
+      {
+        title: {
+          en: "Product Details",
+          br: "Detalhes do Produto",
+        },
+        img: tr_product,
+        description: {
+          en: {
+            title:
+              "A sophisticated bottom-drawer component providing granular product information and a rich media experience for delivery accuracy.",
+            bullets: [
+              {
+                title: "Advanced Media Gallery",
+                body: "Features a smooth, animated carousel with full-screen zoom capabilities, displaying three distinct perspectives: the case, the unit, and the brand logo.",
+              },
+              {
+                title: "Custom Iconography System",
+                body: "Showcases a custom-built icon library, including specialized beverage types, varied packaging formats (trays/boxes), and precise vessel sizes like 473ml and 568ml cans.",
+              },
+              {
+                title: "Technical Data Visualization",
+                body: "Displays critical logistics metadata such as SKU, reference codes, and total weight, alongside visual indicators for delivery vs. pickup status.",
+              },
+            ],
+          },
+          br: {
+            title:
+              "Um componente de drawer inferior sofisticado que fornece informações granulares do produto e uma rica experiência de mídia para precisão na entrega.",
+            bullets: [
+              {
+                title: "Galeria de Mídia Avançada",
+                body: "Apresenta um carrossel animado com zoom em tela cheia, exibindo três perspectivas distintas: a caixa, a unidade e o logotipo da marca.",
+              },
+              {
+                title: "Sistema de Iconografia Próprio",
+                body: "Exibe uma biblioteca de ícones personalizados, incluindo tipos de bebidas, formatos de embalagem e tamanhos precisos como latas de 473ml e 568ml.",
+              },
+              {
+                title: "Visualização de Dados Técnicos",
+                body: "Apresenta metadados logísticos críticos como SKU, códigos de referência e peso total, além de indicadores visuais para status de entrega ou coleta.",
+              },
+            ],
+          },
+        },
+      },
+      {
+        title: {
+          en: "Delivery Confirmation",
+          br: "Confirmação de Entrega",
+        },
+        img: tr_confirmation,
+        description: {
+          en: {
+            title:
+              "A robust Proof of Delivery (POD) interface designed to handle complex logistics scenarios, including multiple invoices and conditional validation logic.",
+            bullets: [
+              {
+                title: "Dynamic Status Management",
+                body: "Implements a tri-state toggle (Success, Partial, Failed) per invoice, dynamically updating UI requirements like mandatory reason codes or signature verification.",
+              },
+              {
+                title: "Contextual Validation",
+                body: "Features a sophisticated validation system where note fields and reason selectors become mandatory (highlighted in red) based on the delivery outcome.",
+              },
+              {
+                title: "Multi-Invoice Logistics",
+                body: "Streamlined header with stop-specific metadata (keg/pickup indicators) and a non-blocking footer that ensures all delivery requirements are met before finalizing.",
+              },
+            ],
+          },
+          br: {
+            title:
+              "Uma interface robusta de Prova de Entrega (POD) projetada para cenários logísticos complexos, tratando múltiplas faturas e lógica de validação condicional.",
+            bullets: [
+              {
+                title: "Gestão Dinâmica de Status",
+                body: "Implementa um seletor de três estados (Sucesso, Parcial, Falha) por fatura, atualizando requisitos de UI como códigos de motivo ou verificação de assinatura.",
+              },
+              {
+                title: "Validação Contextual",
+                body: "Sistema de validação onde campos de notas e seletores de motivo tornam-se obrigatórios (destacados em vermelho) conforme o desfecho da entrega.",
+              },
+              {
+                title: "Logística Multi-Fatura",
+                body: "Header otimizado com metadados da parada (indicadores de barril/coleta) e um rodapé fixo que garante o cumprimento de todos os requisitos antes de finalizar.",
+              },
+            ],
+          },
+        },
+      },
+      {
+        title: {
           en: "Welcome Page",
           br: "Boas-Vindas",
         },
@@ -457,44 +593,89 @@ export const PROJECTS_DATA: IProject[] = [
       },
       {
         title: {
-          en: "Order Details",
-          br: "Sumário",
+          en: "Authentication",
+          br: "Autenticação",
         },
-        img: tr_delivery,
+        img: tr_login,
         description: {
           en: {
             title:
-              "This order details page provides granular visibility into specific delivery items, accessible directly via the dashboard's info button.",
+              "The login screen provides a secure and intuitive entry point for users, focused on clarity and accessibility across different languages.",
             bullets: [
               {
-                title: "Detailed Inventory Checklist",
-                body: "Displays product images, specific quantities, and aggregate metrics such as total weight (e.g., 60.12 kg) and package counts to ensure accurate inventory management.",
+                title: "Internationalization Engine",
+                body: "Features a dedicated language selector that opens a modal to switch the entire app interface between English, Portuguese, and Spanish.",
               },
               {
-                title: "Persistent Location Insights",
-                body: "Integrates a persistent notes system that allows drivers to save unique annotations for a location or view existing order observations to streamline future visits.",
+                title: "Smart Input Design",
+                body: "Includes intuitive username and password fields with a visibility toggle (eye icon) to help users verify their credentials while maintaining security.",
               },
               {
-                title: "Operational Quality Control",
-                body: "Includes quick-action buttons for capturing photographic proof of delivery (signed documents) and a reporting tool for flagging incorrect addresses or system discrepancies.",
+                title: "Flexible User Flow",
+                body: "Provides clear secondary actions, such as a 'Forgot password' recovery path and a back button to return to the welcome screen for account switching.",
               },
             ],
           },
           br: {
             title:
-              "Esta página de detalhes do pedido fornece visibilidade granular sobre itens de entrega específicos, acessível diretamente através do botão de informações do dashboard.",
+              "A tela de login oferece um ponto de entrada seguro e intuitivo para os usuários, com foco na clareza e acessibilidade em diferentes idiomas.",
             bullets: [
               {
-                title: "Checklist de Inventário Detalhado",
-                body: "Exibe imagens dos produtos, quantidades específicas e métricas agregadas, como peso total (ex: 60,12 kg) e contagem de volumes para garantir a gestão precisa do estoque.",
+                title: "Motor de Internacionalização",
+                body: "Apresenta um seletor de idiomas dedicado que abre um modal para alternar toda a interface do app entre Inglês, Português e Espanhol.",
               },
               {
-                title: "Insights Persistentes de Localização",
-                body: "Integra um sistema de notas persistentes que permite aos motoristas salvar anotações exclusivas para um local ou visualizar observações existentes do pedido para agilizar visitas futuras.",
+                title: "Design de Input Inteligente",
+                body: "Inclui campos intuitivos de usuário e senha com um alternador de visibilidade (ícone de olho) para ajudar os usuários a verificar suas credenciais.",
               },
               {
-                title: "Controle de Qualidade Operacional",
-                body: "Inclui botões de ação rápida para captura de prova fotográfica de entrega e uma ferramenta de reporte para sinalizar endereços incorretos ou discrepâncias do sistema.",
+                title: "Fluxo de Usuário Flexível",
+                body: "Oferece ações secundárias claras, como recuperação de senha e um botão de retorno à tela inicial para troca de método de acesso.",
+              },
+            ],
+          },
+        },
+      },
+      {
+        title: {
+          en: "Settings",
+          br: "Configurações",
+        },
+        img: tr_settings,
+        description: {
+          en: {
+            title:
+              "The application's configuration hub, designed to manage user preferences and future logistics optimization parameters.",
+            bullets: [
+              {
+                title: "Logistics Optimization (Planned)",
+                body: "Engineered to store home and supply base locations, enabling automatic route calculation to ensure drivers start at warehouses and finish near home.",
+              },
+              {
+                title: "Support & Ticketing System",
+                body: "Features a dedicated 'Reports' section to track support tickets, such as location corrections reported during deliveries, ensuring a closed-loop resolution process.",
+              },
+              {
+                title: "Core Functionalities",
+                body: "Provides active features including a secure logout flow with confirmation modals and an integrated language selector for full app internationalization.",
+              },
+            ],
+          },
+          br: {
+            title:
+              "O hub de configuração do aplicativo, projetado para gerenciar preferências do usuário e parâmetros futuros de otimização logística.",
+            bullets: [
+              {
+                title: "Otimização Logística (Planejado)",
+                body: "Projetado para armazenar locais de residência e base de abastecimento, permitindo o cálculo automático de rotas para otimizar o deslocamento diário.",
+              },
+              {
+                title: "Sistema de Suporte e Tickets",
+                body: "Inclui uma seção de 'Reports' para rastrear tickets de suporte, como correções de endereços reportadas durante as entregas, garantindo a resolução de pendências.",
+              },
+              {
+                title: "Funcionalidades Principais",
+                body: "Oferece recursos ativos, incluindo um fluxo de logout seguro com modais de confirmação e um seletor de idiomas para internacionalização total do app.",
               },
             ],
           },
