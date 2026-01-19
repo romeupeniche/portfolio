@@ -1,5 +1,6 @@
 import React from "react";
 import child from "../../assets/photos/child.png";
+import soccer from "../../assets/photos/soccer.jpeg";
 import { useSettingsStore } from "../../store/useSettingsStore";
 
 const formatText = (text: string) => {
@@ -44,10 +45,24 @@ const About: React.FC = () => {
         {t("about_me.title")}
       </h1>
       <main className="flex items-center justify-between gap-14">
-        <img src={child} className="w-xs rounded-full" />
+        <img
+          src={child}
+          className="w-80 h-80 rounded-full object-cover mx-auto"
+          alt="Child Romeu looking to a table with robots"
+        />
         <p className="text-2xl font-medium tracking-tighter">
-          {formatText(t("about_me.paragraph"))}
+          {formatText(t("about_me.paragraph1"))}
         </p>
+      </main>
+      <main className="flex items-center justify-between gap-14">
+        <p className="text-2xl font-medium tracking-tighter">
+          {formatText(t("about_me.paragraph2"))}
+        </p>
+        <img
+          src={soccer}
+          className="w-80 h-80 object-cover rounded-full mx-auto"
+          alt="Child Romeu in his hometown team's stadium for a game"
+        />
       </main>
     </section>
   );

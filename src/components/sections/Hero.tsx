@@ -148,7 +148,7 @@ const Hero: React.FC = () => {
 
         {isLowPerf ? (
           <>
-            <h1 className="font-black text-5xl lg:text-7xl w-full mb-4 leading-tight text-white drop-shadow-md">
+            <h1 className="font-black italic tracking-tight text-5xl lg:text-[5.5rem] w-full mb-4 leading-tight text-white drop-shadow-md">
               {titlePhrases[0]}
             </h1>
             <h2 className="font-light text-xl lg:text-2xl text-white/80 max-w-2xl mb-8 drop-shadow-sm">
@@ -159,7 +159,7 @@ const Hero: React.FC = () => {
           <>
             <TextScrambleLoop
               phrases={titlePhrases}
-              className="font-black italic tracking-tight text-5xl lg:text-8xl w-full mb-4 leading-tight text-white drop-shadow-md"
+              className="font-black italic tracking-tight text-5xl lg:text-[5.5rem] w-full mb-4 leading-tight text-white drop-shadow-md"
             />
 
             <TextScrambleLoop
