@@ -2,8 +2,10 @@ import { useState, useEffect, useRef } from "react";
 
 const TypewriterP: React.FC<{
   children: string;
-  isExpanded: boolean;
-}> = ({ children, isExpanded }) => {
+  isExpanded?: boolean;
+  speed?: number;
+  className?: string;
+}> = ({ children, isExpanded = false, speed = 5, className = "" }) => {
   const [displayedText, setDisplayedText] = useState("");
   const prevChildrenRef = useRef(children);
 
@@ -28,24 +30,22 @@ const TypewriterP: React.FC<{
       setDisplayedText(children.slice(0, i));
       i++;
       if (i > targetLimit) clearInterval(timer);
-    }, 5);
+    }, speed);
 
     return () => clearInterval(timer);
-  }, [children, isExpanded, CHAR_LIMIT, displayedText.length]);
+  }, [children, isExpanded, CHAR_LIMIT, displayedText.length, speed]);
 
   return (
     <div className="relative">
       <p
-        className={`text-gray-400 text-sm leading-relaxed opacity-0 pointer-events-none select-none ${
-          !isExpanded ? "line-clamp-4" : "pr-2"
-        }`}
+        className={`text-gray-400 text-sm leading-relaxed opacity-0 pointer-events-none select-none ${!isExpanded ? "line-clamp-4" : "pr-2"}`}
         aria-hidden="true"
       >
         {children}
       </p>
 
       <p
-        className={`text-gray-400 text-sm leading-relaxed absolute top-0 left-0 ${
+        className={` absolute top-0 left-0 ${className} ${
           !isExpanded ? "line-clamp-4" : "pr-2"
         }`}
       >

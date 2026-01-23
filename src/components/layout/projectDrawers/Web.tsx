@@ -94,13 +94,27 @@ const Web: React.FC<{ project: IProject }> = ({ project }) => {
             <span className="text-light-blue font-mono text-[10px] tracking-[0.3em] uppercase">
               Page Overview
             </span>
-            <h3 className="text-4xl font-black text-white tracking-tight leading-none italic">
-              {project.images[currentImageIndex].title[lang]}
-            </h3>
+            <motion.div
+              key={currentImageIndex}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="group"
+            >
+              <h3 className="text-4xl font-black text-white tracking-tight leading-none italic">
+                {project.images[currentImageIndex].title[lang]}
+              </h3>
+            </motion.div>
           </div>
-          <p className="text-gray-400 font-medium italic text-sm md:text-right max-w-md">
-            "{project.images[currentImageIndex].description[lang].title}"
-          </p>
+          <motion.div
+            key={currentImageIndex}
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="group"
+          >
+            <p className="text-gray-400 font-medium italic text-sm md:text-right max-w-md">
+              {project.images[currentImageIndex].description[lang].title}
+            </p>
+          </motion.div>
         </header>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 pb-12">
           {project.images[currentImageIndex].description[lang].bullets.map(

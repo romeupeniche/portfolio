@@ -3,6 +3,7 @@ import type { IProject } from "../../../data/projectsData";
 import ChevronIcon from "../../icons/ChevronIcon";
 import { useSettingsStore } from "../../../store/useSettingsStore";
 import { motion, AnimatePresence } from "framer-motion";
+import TypewriterP from "../ProjectDetails/TypewriterP";
 
 const Mobile: React.FC<{ project: IProject }> = ({ project }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
@@ -89,10 +90,16 @@ const Mobile: React.FC<{ project: IProject }> = ({ project }) => {
                   Screen Overview
                 </p>
               </div>
-
-              <h3 className="text-4xl font-black text-white tracking-tight leading-none italic">
-                {project.images[currentImageIndex].title[lang]}
-              </h3>
+              <motion.div
+                key={currentImageIndex}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="group"
+              >
+                <h3 className="text-4xl font-black text-white tracking-tight leading-none italic">
+                  {project.images[currentImageIndex].title[lang]}
+                </h3>
+              </motion.div>
             </div>
 
             <div className="flex flex-col items-center font-mono">
@@ -110,9 +117,15 @@ const Mobile: React.FC<{ project: IProject }> = ({ project }) => {
               <span className="text-light-blue/40 text-2xl font-serif leading-none opacity-50">
                 “
               </span>
-              <p className="text-gray-400 font-medium italic text-sm leading-relaxed">
+              {/* <p className="text-gray-400 font-medium italic text-sm leading-relaxed">
                 {project.images[currentImageIndex].description[lang].title}
-              </p>
+              </p> */}
+              <TypewriterP
+                speed={4}
+                className="text-gray-400 font-medium italic text-sm leading-relaxed"
+              >
+                {project.images[currentImageIndex].description[lang].title}
+              </TypewriterP>
             </div>
           </div>
         </div>

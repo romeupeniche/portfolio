@@ -1,4 +1,5 @@
-import React from "react";
+import React, { type ElementType } from "react";
+import { motion } from "framer-motion";
 import dottedSendMessage from "../../assets/icons/dotted-send-message.png";
 import AtIcon from "../icons/AtIcon";
 import AnimatedContactButton from "../ui/AnimatedContactButton";
@@ -7,6 +8,31 @@ import GithubLogo from "../icons/GithubIcon";
 import LocationBadge from "../ui/LocationBadge";
 import { useSettingsStore } from "../../store/useSettingsStore";
 
+const contactBtns: {
+  color: "blue" | "green" | "indigo";
+  href: string;
+  label: string;
+  icon: ElementType;
+}[] = [
+  {
+    color: "blue",
+    icon: LinkedInLogo,
+    href: "https://linkedin.com/in/romeupeniche",
+    label: "linkedin.com/in/romeupeniche",
+  },
+  {
+    color: "green",
+    icon: AtIcon,
+    href: "mailto:romeupeniche12@hotmail.com",
+    label: "romeupeniche12@hotmail.com",
+  },
+  {
+    color: "indigo",
+    icon: GithubLogo,
+    href: "https://github.com/romeupeniche",
+    label: "github.com/romeupeniche",
+  },
+];
 const Contact: React.FC = () => {
   const { t } = useSettingsStore();
   return (
@@ -35,24 +61,17 @@ const Contact: React.FC = () => {
           </h3>
         </div>
         <div className="flex flex-col xl:flex-row gap-14 justify-center items-center">
-          <AnimatedContactButton
-            color="blue"
-            icon={LinkedInLogo}
-            href="https://linkedin.com/in/romeupeniche"
-            label="linkedin.com/in/romeupeniche"
-          />
-          <AnimatedContactButton
-            color="green"
-            icon={AtIcon}
-            href="mailto:romeupeniche12@hotmail.com"
-            label="romeupeniche12@hotmail.com"
-          />
-          <AnimatedContactButton
-            color="indigo"
-            icon={GithubLogo}
-            href="https://github.com/romeupeniche"
-            label="github.com/romeupeniche"
-          />
+          {contactBtns.map((props, id) => (
+            <motion.div
+              key={id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: id * 0.1 }}
+              className="shrink-0"
+            >
+              <AnimatedContactButton {...props} />
+            </motion.div>
+          ))}
         </div>
         <div className="flex items-center gap-2 mb-8 justify-center lg:justify-start">
           <span className="relative flex h-3 w-3">

@@ -155,7 +155,11 @@ const ProjectStage = ({ project, period, open, setOpen, children }: Props) => {
                     <Icon className="w-10 h-10" />
                   </header>
                   <div className="flex flex-col gap-2">
-                    <TypewriterP isExpanded={isExpanded}>
+                    <TypewriterP
+                      isExpanded={isExpanded}
+                      speed={2}
+                      className="text-gray-400 text-sm leading-relaxed"
+                    >
                       {project.description[lang]}
                     </TypewriterP>
 
