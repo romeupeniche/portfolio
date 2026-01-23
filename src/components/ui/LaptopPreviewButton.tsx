@@ -1,14 +1,22 @@
 import PreviewIcon from "../../assets/icons/PreviewIcon";
+import GameIcon from "../icons/GameIcon";
 
 const LaptopPreviewButton = ({
   onClick,
   screenImage,
   disabled = false,
+  icon = "preview",
 }: {
   onClick?: () => void;
   screenImage: string;
   disabled?: boolean;
+  icon?: "preview" | "game" | React.FC;
 }) => {
+  const icons = {
+    preview: PreviewIcon,
+    game: GameIcon,
+  };
+  const Icon = (typeof icon === "string" ? icons[icon] : icon) ?? PreviewIcon;
   return (
     <section
       className={`relative flex items-center justify-center w-10 h-10 overflow-visible transition-all 
@@ -29,7 +37,7 @@ const LaptopPreviewButton = ({
                 : ""
             }`}
           >
-            <PreviewIcon
+            <Icon
               className={`w-50 h-50 ${
                 disabled
                   ? "text-zinc-500 fill-zinc-600"
@@ -41,7 +49,7 @@ const LaptopPreviewButton = ({
           <div
             className={`relative z-20 overflow-hidden rounded-t-3xl bg-zinc-950 p-3 
                         transition-all duration-400 ease-in-out origin-bottom
-                        transform-[rotateX(-90deg)] opacity-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.8)]
+                        transform-[rotateX(-87deg)] opacity-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.8)]
                         ${
                           !disabled
                             ? "group-hover:transform-[rotateX(0deg)] group-hover:opacity-100"

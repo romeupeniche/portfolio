@@ -14,9 +14,9 @@ const Contact: React.FC = () => {
       id="contact"
       className="h-lvh min-h-[800px] p-12 w-full flex flex-col justify-center gap-20 bg-linear-to-b from-black-blue to-black"
     >
-      <header className="flex flex-row xl:justify-between items-center justify-end">
+      <header className="flex flex-row xl:justify-between items-center justify-center">
         <img src={dottedSendMessage} className="w-xl hidden xl:inline-block" />
-        <h1 className="italic tracking-tighter font-black lg:text-8xl text-5xl text-right text-nowrap">
+        <h1 className="italic tracking-tighter font-black lg:text-8xl text-6xl text-right text-nowrap">
           {t("contact.title")}
         </h1>
       </header>
@@ -34,7 +34,7 @@ const Contact: React.FC = () => {
             {t("contact.end")}
           </h3>
         </div>
-        <div className="flex flex-row gap-14 justify-center items-center">
+        <div className="flex flex-col xl:flex-row gap-14 justify-center items-center">
           <AnimatedContactButton
             color="blue"
             icon={LinkedInLogo}

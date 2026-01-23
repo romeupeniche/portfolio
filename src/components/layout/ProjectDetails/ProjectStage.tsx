@@ -4,11 +4,13 @@ import { techData } from "../../../data/techData";
 import { createPortal } from "react-dom";
 import type { IProject } from "../../../data/projectsData";
 import { useSettingsStore } from "../../../store/useSettingsStore";
+import TypewriterP from "./TypewriterP";
 interface Props {
   open: boolean;
   setOpen: (value: boolean) => void;
   children?: ReactNode;
   project: IProject;
+  period: string;
 }
 const Icons = {
   Tool: () => (
@@ -73,13 +75,14 @@ const Icons = {
   ),
 };
 
-const ProjectStage = ({ project, open, setOpen, children }: Props) => {
+const ProjectStage = ({ project, period, open, setOpen, children }: Props) => {
   const { t, lang } = useSettingsStore();
   const [isExpanded, setIsExpanded] = useState(false);
   const Icon = project.icon;
   const closeModal = useCallback(() => {
     setOpen(false);
     document.documentElement.style.overflow = "";
+    setIsExpanded(false);
   }, [setOpen]);
 
   useEffect(() => {
@@ -152,13 +155,9 @@ const ProjectStage = ({ project, open, setOpen, children }: Props) => {
                     <Icon className="w-10 h-10" />
                   </header>
                   <div className="flex flex-col gap-2">
-                    <p
-                      className={`text-gray-400 text-sm leading-relaxed ${
-                        !isExpanded ? "line-clamp-4" : "pr-2"
-                      }`}
-                    >
+                    <TypewriterP isExpanded={isExpanded}>
                       {project.description[lang]}
-                    </p>
+                    </TypewriterP>
 
                     <button
                       onClick={() => setIsExpanded(!isExpanded)}
@@ -177,7 +176,7 @@ const ProjectStage = ({ project, open, setOpen, children }: Props) => {
                     </span>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {project.mainTechUsed.map((techId) => {
+                    {project.mainTechUsed.map((techId, idx) => {
                       const tech = techData
                         .flatMap((category) => category.items)
                         .find((item) => item.id === techId);
@@ -186,12 +185,20 @@ const ProjectStage = ({ project, open, setOpen, children }: Props) => {
                       const { title: techTitle } = tech;
 
                       return (
-                        <span
-                          key={techTitle}
-                          className="px-3 py-1 bg-white/3 border border-white/10 rounded text-xs text-gray-300 font-mono"
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0, x: -30 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: idx * 0.1 }}
+                          className="group"
                         >
-                          {techTitle}
-                        </span>
+                          <span
+                            key={techTitle}
+                            className="px-3 py-1 bg-white/3 border border-white/10 rounded text-xs text-gray-300 font-mono"
+                          >
+                            {techTitle}
+                          </span>
+                        </motion.div>
                       );
                     })}
                   </div>
@@ -205,13 +212,21 @@ const ProjectStage = ({ project, open, setOpen, children }: Props) => {
                     </span>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {project.extraTechUsed.map((techTitle) => (
-                      <span
-                        key={techTitle}
-                        className="px-3 py-1 bg-white/3 border border-white/10 rounded text-xs text-gray-300 font-mono"
+                    {project.extraTechUsed.map((techTitle, idx) => (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.1 }}
+                        className="group"
                       >
-                        {techTitle}
-                      </span>
+                        <span
+                          key={techTitle}
+                          className="px-3 py-1 bg-white/3 border border-white/10 rounded text-xs text-gray-300 font-mono"
+                        >
+                          {techTitle}
+                        </span>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
@@ -219,7 +234,7 @@ const ProjectStage = ({ project, open, setOpen, children }: Props) => {
 
               <div className="flex flex-col gap-3 pt-6 border-t border-white/5">
                 <a
-                  href={project.link ?? ""}
+                  href={project.link ?? undefined}
                   aria-disabled={project.deploy === "development"}
                   target="_blank"
                   rel="noreferrer"
@@ -303,9 +318,7 @@ const ProjectStage = ({ project, open, setOpen, children }: Props) => {
                   <p className="text-xs text-white/20 font-mono">
                     {project.type.br}
                   </p>
-                  <p className="text-xs text-white/20 font-mono">
-                    {project.period.br}
-                  </p>
+                  <p className="text-xs text-white/20 font-mono">{period}</p>
                 </span>
                 <div className="text-[11px] font-mono text-white/20">
                   {project.platform === "web"

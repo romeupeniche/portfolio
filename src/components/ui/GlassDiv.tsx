@@ -67,7 +67,7 @@ const GlassDiv = ({
                 ${title ? "cursor-pointer hover:text-light-blue px-4" : "px-8"}
                 ${
                   children
-                    ? "after:rounded-[20px] rounded-[20px] before:rounded-[20px] h-full w-[70vh]"
+                    ? "after:rounded-[20px] rounded-3xl before:rounded-[20px] h-full w-[70vh]"
                     : `rounded-lg after:rounded ${
                         isLowPerf
                           ? "after:[background:#2d2d2dee]"

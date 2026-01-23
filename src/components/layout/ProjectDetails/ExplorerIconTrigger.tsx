@@ -8,16 +8,23 @@ export const ExplorerIconWithDrawer = ({
   project,
   open,
   setOpen,
+  period,
 }: {
   project: IProject;
   open: boolean;
   setOpen: (value: boolean) => void;
+  period: string;
 }) => {
   const { platform } = project;
   return (
     <div className="grid place-content-center">
       <FileExplorerAnimatedIcon onClick={() => setOpen(true)} />
-      <ProjectStage open={open} setOpen={setOpen} project={project}>
+      <ProjectStage
+        open={open}
+        setOpen={setOpen}
+        project={project}
+        period={period}
+      >
         {platform === "web" ? (
           <Web project={project} />
         ) : (

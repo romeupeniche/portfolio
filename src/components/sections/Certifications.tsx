@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useSettingsStore } from "../../store/useSettingsStore";
 import { certifications } from "../../data/certifications";
-import { useHorizontalScroll } from "../../hooks/useHorizontalScroll";
 import { techData } from "../../data/techData";
 
 const Icons = {
@@ -54,7 +53,6 @@ const Icons = {
 
 const Certifications = () => {
   const { lang, t } = useSettingsStore();
-  const scrollRef = useHorizontalScroll<HTMLDivElement>();
 
   const sortedCertifications = [...certifications].sort(
     (a, b) => b.date.getTime() - a.date.getTime(),
@@ -75,17 +73,13 @@ const Certifications = () => {
         </h2>
       </header>
 
-      <div
-        ref={scrollRef}
-        className="flex overflow-x-auto gap-6 px-4 pb-8 custom-scrollbar"
-      >
-        {sortedCertifications.map((cert, index) => (
+      <div className="flex overflow-x-auto gap-6 px-4 pb-8 custom-scrollbar">
+        {sortedCertifications.map((cert) => (
           <motion.div
             key={cert.title}
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.1 }}
-            viewport={{ once: true }}
+            // viewport={{ once: true }}
             className="group relative flex-none w-[350px] md:w-[450px] flex flex-col snap-start border border-white/5 rounded-2xl overflow-hidden hover:border-light-blue/50 transition-all duration-500"
           >
             <div className="absolute top-4 left-4 z-1 flex">

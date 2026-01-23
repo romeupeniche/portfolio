@@ -12,7 +12,7 @@ const Header: React.FC = () => {
   const { t } = useSettingsStore();
 
   return (
-    <header className="absolute w-full z-10">
+    <header className="absolute w-full z-30">
       <nav
         style={{
           position: "fixed",

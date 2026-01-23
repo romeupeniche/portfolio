@@ -12,7 +12,7 @@ const Web: React.FC<{ project: IProject }> = ({ project }) => {
     setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
   const prevImage = () =>
     setCurrentImageIndex(
-      (prev) => (prev - 1 + project.images.length) % project.images.length
+      (prev) => (prev - 1 + project.images.length) % project.images.length,
     );
 
   useEffect(() => {
@@ -106,7 +106,7 @@ const Web: React.FC<{ project: IProject }> = ({ project }) => {
           {project.images[currentImageIndex].description[lang].bullets.map(
             ({ title, body }, idx) => (
               <motion.div
-                key={idx}
+                key={idx + title}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
@@ -122,7 +122,7 @@ const Web: React.FC<{ project: IProject }> = ({ project }) => {
                   {body}
                 </p>
               </motion.div>
-            )
+            ),
           )}
         </div>
       </section>

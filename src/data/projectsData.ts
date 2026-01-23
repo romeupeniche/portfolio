@@ -17,6 +17,9 @@ import tr_settings from "../assets/projects-images/trevo/settings.png";
 // Portfolio Images
 import pf_main from "../assets/projects-images/portfolio/main.jpeg";
 import pf_hero from "../assets/projects-images/portfolio/hero.png";
+// Hollow Key Images
+import hk_hero from "../assets/projects-images/hollowkey/hero.png";
+import hk_start from "../assets/projects-images/hollowkey/start.png";
 // Other
 import FootyShirtsIcon from "../components/icons/FootyShirtsIcon";
 import type { ElementType } from "react";
@@ -35,13 +38,15 @@ export interface IProject {
   title: string;
   link: string | null;
   githubURL: string;
-  platform: "web" | "mobile";
+  platform: "web" | "mobile" | "desktop";
   description: LocalizedText;
-  period: LocalizedText;
+  // period: LocalizedText;
+  startDate: string;
+  endDate?: string;
   type: LocalizedText;
   mainTechUsed: string[];
   extraTechUsed: string[];
-  deploy: "netlify" | "development";
+  deploy: "netlify" | "development" | "PyInstaller";
   heroImage: string;
   images: {
     title: LocalizedText;
@@ -62,10 +67,12 @@ export const PROJECTS_DATA: IProject[] = [
       en: "Footy Shirts is a digital catalog platform dedicated to football shirts, designed to provide a fluid and modern browsing experience. The project focuses on a clean and intuitive interface, allowing users to explore the jerseys of top clubs with ease and a strong emphasis on product visuals. Prioritizing performance and responsiveness, the application organizes the kits objectively, making it simple to view details and ensuring that enthusiasts can find their team's gear in an optimized, straightforward digital environment.",
       br: "O Footy Shirts é uma plataforma de catálogo digital dedicada a camisas de futebol, desenvolvida para oferecer uma experiência de navegação fluida e moderna. O projeto foca em uma interface limpa e intuitiva, permitindo que o usuário explore os uniformes dos principais clubes com praticidade e foco no visual do produto. Priorizando a performance e a responsividade, a aplicação organiza os mantos de forma objetiva, facilitando a visualização de detalhes e garantindo que o entusiasta encontre o item do seu time em um ambiente digital otimizado e direto ao ponto.",
     },
-    period: {
-      en: "May 2023 - Dec 2023",
-      br: "Maio 2023 - Dez 2023",
-    },
+    // period: {
+    //   en: "May 2023 - Dec 2023",
+    //   br: "Maio 2023 - Dez 2023",
+    // },
+    startDate: "2023-05",
+    endDate: "2023-12",
     type: {
       en: "Soccer Apparel E-Commerce",
       br: "E-Commerce de Vestuário Esportivo",
@@ -358,10 +365,11 @@ export const PROJECTS_DATA: IProject[] = [
       en: "Trevo is a robust last-mile logistics solution designed to streamline complex B2B delivery and pickup workflows. Developed with a focus on field operational intelligence, the app transforms traditional manual processes into a high-precision digital environment. It features advanced route synchronization, a persistent location-based knowledge base for drivers, and a visual-first inventory system. Validated with real-world distribution data, Trevo solves critical friction points in the supply chain, from automated Proof of Delivery (PoD) to intelligent cargo management, making it an adaptable tool for any high-volume distribution vertical.",
       br: "O Trevo é uma solução logística de last-mile desenvolvida para otimizar fluxos complexos de entrega e coleta B2B. Focado em inteligência operacional de campo, o app transforma processos manuais tradicionais em um ambiente digital de alta precisão. Apresenta sincronização avançada de rotas, base de conhecimento persistente por geolocalização e um sistema de inventário focado em identificação visual. Validado com dados reais de distribuição, o Trevo resolve pontos críticos de fricção na cadeia de suprimentos, desde a Prova de Entrega (PoD) automatizada até o gerenciamento inteligente de carga, sendo uma ferramenta adaptável para qualquer vertical de distribuição.",
     },
-    period: {
-      en: "Aug 2025 - Ongoing",
-      br: "Ago 2025 - Em curso",
-    },
+    // period: {
+    //   en: "Aug 2025 - Ongoing",
+    //   br: "Ago 2025 - Em curso",
+    // },
+    startDate: "2025-08",
     type: {
       en: "Last-Mile Delivery App",
       br: "Aplicativo de Logística Last-Mile",
@@ -699,10 +707,12 @@ export const PROJECTS_DATA: IProject[] = [
       en: "A high-performance personal portfolio designed to showcase software engineering projects with a focus on clean architecture and exceptional UX. Built with React and TypeScript, it features a bespoke design system, fluid animations, and a focus on scannability. The project demonstrates the integration of complex SVG manipulation, responsive layouts, and a modular component structure, serving as a living document of my technical evolution and design philosophy.",
       br: "Um portfólio pessoal de alta performance desenvolvido para apresentar projetos de engenharia de software com foco em arquitetura limpa e UX excepcional. Construído com React e TypeScript, apresenta um design system próprio, animações fluidas e foco em escaneabilidade. O projeto demonstra a integração de manipulação complexa de SVGs, layouts responsivos e uma estrutura de componentes modulares, servindo como um documento vivo da minha evolução técnica e filosofia de design.",
     },
-    period: {
-      en: "Dec 2025 - Jan 2026",
-      br: "Dez 2025 - Jan 2026",
-    },
+    // period: {
+    //   en: "Dec 2025 - Jan 2026",
+    //   br: "Dez 2025 - Jan 2026",
+    // },
+    startDate: "2025-12",
+    endDate: "2026-01",
     type: {
       en: "Personal Portfolio & Design System",
       br: "Portfólio Pessoal & Design System",
@@ -770,25 +780,27 @@ export const PROJECTS_DATA: IProject[] = [
       en: "A high-performance personal portfolio designed to showcase software engineering projects with a focus on clean architecture and exceptional UX. Built with React and TypeScript, it features a bespoke design system, fluid animations, and a focus on scannability. The project demonstrates the integration of complex SVG manipulation, responsive layouts, and a modular component structure, serving as a living document of my technical evolution and design philosophy.",
       br: "Um portfólio pessoal de alta performance desenvolvido para apresentar projetos de engenharia de software com foco em arquitetura limpa e UX excepcional. Construído com React e TypeScript, apresenta um design system próprio, animações fluidas e foco em escaneabilidade. O projeto demonstra a integração de manipulação complexa de SVGs, layouts responsivos e uma estrutura de componentes modulares, servindo como um documento vivo da minha evolução técnica e filosofia de design.",
     },
-    period: {
-      en: "Dec 2025 - Jan 2026",
-      br: "Dez 2025 - Jan 2026",
-    },
+    // period: {
+    //   en: "Dec 2023",
+    //   br: "Dez 2023",
+    // },
+    startDate: "2023-12",
+    endDate: "2023-12",
     type: {
       en: "Personal Portfolio & Design System",
       br: "Portfólio Pessoal & Design System",
     },
     mainTechUsed: ["python"],
     extraTechUsed: ["Pygame"],
-    deploy: "netlify",
-    heroImage: pf_hero,
+    deploy: "PyInstaller",
+    heroImage: hk_hero,
     images: [
       {
         title: {
-          en: "Home Page",
+          en: "Start Page",
           br: "Página Inicial",
         },
-        img: pf_main,
+        img: hk_start,
         description: {
           en: {
             title:

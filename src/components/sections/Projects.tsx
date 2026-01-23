@@ -1,18 +1,45 @@
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import rocket from "../../assets/icons/rocket.png";
 import GlassDiv from "../ui/GlassDiv";
 import { PROJECTS_DATA } from "../../data/projectsData";
-
+import { motion } from "framer-motion";
 import { techData } from "../../data/techData";
 import { ExplorerIconWithDrawer } from "../layout/ProjectDetails/ExplorerIconTrigger";
 import LaptopPreviewButton from "../ui/LaptopPreviewButton";
 import scrollToSection from "../../utils/scrollToSection";
 import { useSettingsStore } from "../../store/useSettingsStore";
 
+const sortedProjects = [...PROJECTS_DATA].sort((a, b) => {
+  const dateA = a.endDate || "9999-12";
+  const dateB = b.endDate || "9999-12";
+  return dateB.localeCompare(dateA);
+});
 const Projects: React.FC = () => {
   const { lang, t } = useSettingsStore();
   const [openProjectId, setOpenProjectId] = React.useState<string | null>(null);
 
+  const monthFormatter = useMemo(() => {
+    return new Intl.DateTimeFormat(lang === "br" ? "pt-BR" : "en-US", {
+      month: "long",
+    });
+  }, [lang]);
+
+  const formatMonthYear = useCallback(
+    (dateStr: string | undefined): string => {
+      if (!dateStr) {
+        return lang === "br" ? "Em curso" : "Ongoing";
+      }
+      const [year, month] = dateStr.split("-");
+      const date = new Date(Number(year), Number(month) - 1, 1);
+      const monthFull = monthFormatter.format(date);
+      const monthFormatted =
+        monthFull.length <= 4 ? monthFull : monthFull.slice(0, 3);
+      const finalString = `${monthFormatted} ${year}`;
+
+      return finalString.charAt(0).toUpperCase() + finalString.slice(1);
+    },
+    [lang, monthFormatter],
+  );
   return (
     <section
       id="projects"
@@ -27,12 +54,13 @@ const Projects: React.FC = () => {
       {/* <nav className="flex h-full items-stretch gap-4"> */}
       <nav className="flex h-full items-stretch gap-4 overflow-x-auto custom-scrollbar">
         {/* da pra adicionar um justify-center quando adicionar mais um projeto */}
-        {PROJECTS_DATA.map((project) => {
+        {sortedProjects.map((project) => {
           const {
             id,
             title,
             icon: Icon,
-            period,
+            startDate,
+            endDate,
             mainTechUsed,
             deploy,
             link,
@@ -50,8 +78,21 @@ const Projects: React.FC = () => {
           const isDrawerOpen = openProjectId === id;
           const setIsDrawerOpen = (open: boolean) =>
             setOpenProjectId(open ? id : null);
+
+          const periodStart = formatMonthYear(startDate);
+          const periodEnd = formatMonthYear(endDate);
+          const period =
+            periodEnd === periodStart
+              ? periodStart
+              : periodStart + " - " + periodEnd;
           return (
-            <nav key={id} className="shrink-0">
+            <motion.div
+              key={id}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+              className="shrink-0"
+            >
               <GlassDiv>
                 <header className="flex items-center justify-between">
                   <span className="group">
@@ -61,7 +102,7 @@ const Projects: React.FC = () => {
                     <div className="flex items-center gap-3 mb-2">
                       <span className="shrink-0 w-6 h-px bg-light-blue/50 group-hover:w-10 transition-all" />
                       <h4 className="text-white/20 font-bold text-sm tracking-wide group-hover:text-light-blue transition-colors">
-                        {period[lang]}
+                        {period}
                       </h4>
                     </div>
                   </span>
@@ -113,16 +154,20 @@ const Projects: React.FC = () => {
                       onClick={previewOnClick!}
                       screenImage={images[0].img}
                       disabled={deploy == "development"}
+                      icon={
+                        project.deploy === "PyInstaller" ? "game" : "preview"
+                      }
                     />
                     <ExplorerIconWithDrawer
                       project={project}
                       open={isDrawerOpen}
                       setOpen={setIsDrawerOpen}
+                      period={period}
                     />
                   </nav>
                 </footer>
               </GlassDiv>
-            </nav>
+            </motion.div>
           );
         })}
       </nav>

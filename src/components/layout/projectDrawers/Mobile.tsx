@@ -39,9 +39,9 @@ const Mobile: React.FC<{ project: IProject }> = ({ project }) => {
               <motion.img
                 key={currentImageIndex}
                 src={project.images[currentImageIndex].img}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.05 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
                 className="h-full select-none"
                 draggable={false}
@@ -123,18 +123,26 @@ const Mobile: React.FC<{ project: IProject }> = ({ project }) => {
           </h4>
           <div className="space-y-4">
             {project.images[currentImageIndex].description[lang].bullets.map(
-              ({ body, title }, i) => (
-                <div
-                  key={i}
-                  className="group border-l-2 border-white/5 hover:border-light-blue/50 pl-4 transition-colors"
+              ({ body, title }, idx) => (
+                <motion.div
+                  key={idx + title}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="group"
                 >
-                  <h5 className="text-white text-sm font-bold mb-1 transition-colors group-hover:text-light-blue">
-                    {title}
-                  </h5>
-                  <p className="text-xs text-gray-400 leading-relaxed">
-                    {body}
-                  </p>
-                </div>
+                  <div
+                    key={idx}
+                    className="group border-l-2 border-white/5 hover:border-light-blue/50 pl-4 transition-colors"
+                  >
+                    <h5 className="text-white text-sm font-bold mb-1 transition-colors group-hover:text-light-blue">
+                      {title}
+                    </h5>
+                    <p className="text-xs text-gray-400 leading-relaxed">
+                      {body}
+                    </p>
+                  </div>
+                </motion.div>
               ),
             )}
           </div>
