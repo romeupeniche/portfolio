@@ -5,7 +5,7 @@ const PerformanceToggle = () => {
 
   const colors = {
     active: "#F59E0B",
-    inactive: "#3C3B6E",
+    inactive: "#4ade80",
     textInactive: "#9CA3AF",
   };
 

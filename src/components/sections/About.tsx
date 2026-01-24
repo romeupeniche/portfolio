@@ -38,29 +38,29 @@ const About: React.FC = () => {
   const { t } = useSettingsStore();
   return (
     <section
-      className="h-lvh min-h-[800px] bg-linear-to-b from-transparent to-black-blue p-12 flex flex-col justify-center"
+      className="h-lvh min-h-[800px] gap-4 bg-linear-to-b from-transparent to-black-blue p-12 flex flex-col justify-center"
       id="about"
     >
-      <h1 className="font-black italic tracking-tighter text-8xl text-center">
+      <h1 className="font-black italic tracking-tighter text-6xl md:text-8xl text-center">
         {t("about_me.title")}
       </h1>
       <main className="flex items-center justify-between gap-14">
         <img
           src={child}
-          className="w-80 h-80 rounded-full object-cover mx-auto"
+          className="w-30 h-30 md:w-80 md:h-80 rounded-full object-cover mx-auto"
           alt="Child Romeu looking to a table with robots"
         />
-        <p className="text-2xl font-medium tracking-tighter">
+        <p className="md:text-2xl text-xs font-medium tracking-tighter">
           {formatText(t("about_me.paragraph1"))}
         </p>
       </main>
       <main className="flex items-center justify-between gap-14">
-        <p className="text-2xl font-medium tracking-tighter">
+        <p className="md:text-2xl text-xs font-medium tracking-tighter">
           {formatText(t("about_me.paragraph2"))}
         </p>
         <img
           src={soccer}
-          className="w-80 h-80 object-cover rounded-full mx-auto"
+          className="w-30 h-30 md:w-80 md:h-80 object-cover rounded-full mx-auto"
           alt="Child Romeu in his hometown team's stadium for a game"
         />
       </main>

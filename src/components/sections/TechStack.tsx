@@ -50,7 +50,7 @@ const TechStack: React.FC = () => {
             <TechStackCard key={tech.key} techObj={tech} />
           ))}
         </div>
-        <div className="flex flex-row gap-4 w-full">
+        <div className="flex flex-row w-full">
           {techData.slice(1).map((tech) => (
             <TechStackCard key={tech.key} techObj={tech} />
           ))}

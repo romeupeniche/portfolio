@@ -64,7 +64,7 @@ const Certifications = () => {
       className="py-20 px-4 md:px-10 mx-auto bg-black-blue overflow-hidden"
     >
       <header className="mb-12 mx-auto">
-        <h2 className="text-8xl font-black text-white italic tracking-tighter">
+        <h2 className="text-5xl md:text-8xl font-black text-white italic tracking-tighter">
           {t("awards.title").split(" ")[0]}{" "}
           <span className="text-light-blue">
             {t("awards.title").split(" ")[1]}
@@ -76,7 +76,7 @@ const Certifications = () => {
       <div className="flex overflow-x-auto gap-6 px-4 pb-8 custom-scrollbar">
         {sortedCertifications.map((cert) => (
           <motion.div
-            key={cert.title}
+            key={cert.title + cert.date}
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             // viewport={{ once: true }}
@@ -124,7 +124,7 @@ const Certifications = () => {
                 </h3>
               </div>
 
-              <div className="flex flex-wrap gap-2 mt-auto mb-6">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {cert.skills.map((skill) => {
                   const tech = techData
                     .flatMap((category) => category.items)
@@ -140,7 +140,7 @@ const Certifications = () => {
                 })}
               </div>
 
-              <div className="h-10 pt-4 border-t border-white/5 flex items-center justify-between gap-4">
+              <div className="md:h-10 mt-auto pt-4 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
                 <span className="text-[9px] font-mono text-white/20 line-clamp-2">
                   {cert.description[lang]}
                 </span>

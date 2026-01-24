@@ -159,12 +159,12 @@ const Hero: React.FC = () => {
           <>
             <TextScrambleLoop
               phrases={titlePhrases}
-              className="font-black italic tracking-tight text-5xl lg:text-[5.5rem] w-full mb-4 leading-tight text-white drop-shadow-md"
+              className="font-black italic tracking-tight text-4xl lg:text-[5.5rem] w-full mb-4 leading-tight text-white drop-shadow-md"
             />
 
             <TextScrambleLoop
               phrases={subtitlePhrases}
-              className="font-light text-xl lg:text-2xl text-white/80 max-w-2xl mb-8 drop-shadow-sm"
+              className="font-light text-xs lg:text-2xl text-white/80 max-w-2xl mb-8 drop-shadow-sm"
             />
           </>
         )}

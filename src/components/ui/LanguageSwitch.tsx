@@ -1,11 +1,11 @@
 import { useSettingsStore } from "../../store/useSettingsStore";
 
 const LanguageSwitch = () => {
-  const { lang, setLang } = useSettingsStore();
+  const { lang, toggleLang } = useSettingsStore();
 
   const colors = {
     br: "#009B3A",
-    en: "#3C3B6E",
+    en: "#FB7185",
     inactive: "#9CA3AF",
   };
 
@@ -43,7 +43,8 @@ const LanguageSwitch = () => {
           />
 
           <button
-            onClick={() => setLang("en")}
+            onClick={toggleLang}
+            disabled={lang === "en"}
             className="relative z-10 flex-1 text-[11px] font-bold transition-colors duration-300"
             style={{
               color: lang === "en" ? colors.en : colors.inactive,
@@ -54,7 +55,8 @@ const LanguageSwitch = () => {
           </button>
 
           <button
-            onClick={() => setLang("br")}
+            onClick={toggleLang}
+            disabled={lang === "br"}
             className="relative z-10 flex-1 text-[11px] font-bold transition-colors duration-300"
             style={{
               color: lang === "br" ? colors.br : colors.inactive,

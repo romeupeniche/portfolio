@@ -6,7 +6,7 @@ import type { Language, TranslationKeys } from "../types/i18n";
 interface SettingsState {
   lang: Language;
   isLowPerf: boolean;
-  setLang: (lang: Language) => void;
+  toggleLang: () => void;
   toggleLowPerf: () => void;
   t: (key: TranslationKeys, vars?: Record<string, string>) => string;
 }
@@ -17,7 +17,10 @@ export const useSettingsStore = create<SettingsState>()(
       lang: "en",
       isLowPerf: false,
 
-      setLang: (newLang) => set({ lang: newLang }),
+      toggleLang: () =>
+        set((state) => ({
+          lang: state.lang === "en" ? "br" : "en",
+        })),
 
       toggleLowPerf: () => set((state) => ({ isLowPerf: !state.isLowPerf })),
 
