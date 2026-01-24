@@ -1,20 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import type { IProject } from "../../../data/projectsData";
 import ChevronIcon from "../../icons/ChevronIcon";
 import { useSettingsStore } from "../../../store/useSettingsStore";
 import { motion, AnimatePresence } from "framer-motion";
 import TypewriterP from "../ProjectDetails/TypewriterP";
 
-const Mobile: React.FC<{ project: IProject }> = ({ project }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+const Mobile: React.FC<{
+  project: IProject;
+  nextImage: () => void;
+  prevImage: () => void;
+  currentImageIndex: number;
+  setCurrentImageIndex: (idx: number) => void;
+}> = ({
+  project,
+  currentImageIndex,
+  nextImage,
+  prevImage,
+  setCurrentImageIndex,
+}) => {
   const { lang, t } = useSettingsStore();
-
-  const nextImage = () =>
-    setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
-  const prevImage = () =>
-    setCurrentImageIndex(
-      (prev) => (prev - 1 + project.images.length) % project.images.length,
-    );
 
   useEffect(() => {
     const handleArrow = (e: KeyboardEvent) => {
@@ -32,7 +36,7 @@ const Mobile: React.FC<{ project: IProject }> = ({ project }) => {
   });
 
   return (
-    <div className="flex bg-black flex-col lg:flex-row h-full gap-8 p-4 lg:p-10 text-neutral-300 ">
+    <div className="flex bg-black flex-col lg:flex-row lg:h-full gap-8 p-4 lg:p-10 text-neutral-300 ">
       <section className="flex-1 flex flex-col items-center justify-center space-y-6">
         <div className="relative group h-full">
           <div className="relative z-10 rounded-[3rem] overflow-hidden h-full">
@@ -44,7 +48,7 @@ const Mobile: React.FC<{ project: IProject }> = ({ project }) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="h-full select-none"
+                className="h-[400px] lg:h-full select-none"
                 draggable={false}
               />
             </AnimatePresence>
@@ -81,7 +85,7 @@ const Mobile: React.FC<{ project: IProject }> = ({ project }) => {
       </section>
 
       <section className="flex-1 space-y-8 overflow-y-auto pr-4 custom-scrollbar">
-        <div className="relative overflow-hidden bg-linear-to-br from-white/3 to-transparent border border-white/10 rounded-3xl p-8">
+        <div className="relative overflow-hidden bg-linear-to-br from-white/3 to-transparent lg:border border-white/10 rounded-3xl lg:p-8">
           <header className="relative z-10 flex justify-between items-center gap-4">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
@@ -117,9 +121,6 @@ const Mobile: React.FC<{ project: IProject }> = ({ project }) => {
               <span className="text-light-blue/40 text-2xl font-serif leading-none opacity-50">
                 “
               </span>
-              {/* <p className="text-gray-400 font-medium italic text-sm leading-relaxed">
-                {project.images[currentImageIndex].description[lang].title}
-              </p> */}
               <TypewriterP
                 speed={4}
                 className="text-gray-400 font-medium italic text-sm leading-relaxed"

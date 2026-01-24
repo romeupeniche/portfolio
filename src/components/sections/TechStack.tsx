@@ -11,7 +11,7 @@ const TechStack: React.FC = () => {
   return (
     <section
       id="tech-stack"
-      className="h-lvh min-h-[800px] w-full flex flex-col p-10 bg-black-blue overflow-hidden relative"
+      className="min-h-lvh w-full flex flex-col p-10 bg-black-blue overflow-hidden relative"
     >
       {!isLowPerf && (
         <>

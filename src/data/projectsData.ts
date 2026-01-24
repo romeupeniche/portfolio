@@ -7,6 +7,7 @@ import fs_search from "../assets/projects-images/footy-shirts/search.png";
 import fs_home from "../assets/projects-images/footy-shirts/home.png";
 import fs_hero from "../assets/projects-images/footy-shirts/hero.png";
 // Trevo Images
+import tr_hero from "../assets/projects-images/trevo/hero.png";
 import tr_dashboard from "../assets/projects-images/trevo/dashboard.png";
 import tr_welcome from "../assets/projects-images/trevo/welcome.png";
 import tr_confirmation from "../assets/projects-images/trevo/confirmation.png";
@@ -377,7 +378,7 @@ export const PROJECTS_DATA: IProject[] = [
     mainTechUsed: ["reactnative", "typescript"],
     extraTechUsed: ["I18n"],
     deploy: "development",
-    heroImage: tr_dashboard,
+    heroImage: tr_hero,
     images: [
       {
         title: {

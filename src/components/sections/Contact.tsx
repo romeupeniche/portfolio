@@ -60,7 +60,7 @@ const Contact: React.FC = () => {
             {t("contact.end")}
           </h3>
         </div>
-        <div className="flex flex-col xl:flex-row gap-14 justify-center items-center">
+        <div className="flex flex-col xl:flex-row gap-8 sm:gap-14 justify-center items-center">
           {contactBtns.map((props, id) => (
             <motion.div
               key={id}

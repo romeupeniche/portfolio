@@ -11,6 +11,8 @@ interface Props {
   children?: ReactNode;
   project: IProject;
   period: string;
+  nextImage: () => void;
+  prevImage: () => void;
 }
 const Icons = {
   Tool: () => (
@@ -75,10 +77,19 @@ const Icons = {
   ),
 };
 
-const ProjectStage = ({ project, period, open, setOpen, children }: Props) => {
+const ProjectStage = ({
+  project,
+  period,
+  open,
+  setOpen,
+  children,
+  nextImage,
+  prevImage,
+}: Props) => {
   const { t, lang } = useSettingsStore();
   const [isExpanded, setIsExpanded] = useState(false);
   const Icon = project.icon;
+
   const closeModal = useCallback(() => {
     setOpen(false);
     document.documentElement.style.overflow = "";
@@ -129,8 +140,25 @@ const ProjectStage = ({ project, period, open, setOpen, children }: Props) => {
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-3 opacity-40 hover:opacity-100 transition-opacity pointer-events-none">
-                      <div className="flex items-center gap-1.5">
+                    <span
+                      className="text-red-500 p-2 lg:hidden flex cursor-pointer"
+                      onClick={closeModal}
+                    >
+                      <svg width="15" height="15" viewBox="0 0 10 10">
+                        <path
+                          d="M1 1l8 8m0-8L1 9"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                    </span>
+
+                    <div className="items-center gap-3 opacity-40 hover:opacity-100 lg:flex hidden transition-opacity">
+                      <div
+                        className="flex items-center gap-1.5 cursor-pointer"
+                        onClick={closeModal}
+                      >
                         <span className="text-[10px] font-mono bg-white/10 px-1.5 py-0.5 rounded border border-white/10 text-white/50">
                           ESC
                         </span>
@@ -138,10 +166,16 @@ const ProjectStage = ({ project, period, open, setOpen, children }: Props) => {
                       <div className="w-px h-3 bg-white/10" />
                       <div className="flex items-center gap-1.5">
                         <div className="flex gap-1">
-                          <span className="text-[10px] font-mono bg-white/10 px-1.5 py-0.5 rounded border border-white/10 text-white/50">
+                          <span
+                            onClick={prevImage}
+                            className="text-[10px] cursor-pointer font-mono bg-white/10 px-1.5 py-0.5 rounded border border-white/10 text-white/50"
+                          >
                             ←
                           </span>
-                          <span className="text-[10px] font-mono bg-white/10 px-1.5 py-0.5 rounded border border-white/10 text-white/50">
+                          <span
+                            onClick={nextImage}
+                            className="text-[10px] font-mono cursor-pointer bg-white/10 px-1.5 py-0.5 rounded border border-white/10 text-white/50"
+                          >
                             →
                           </span>
                         </div>
@@ -236,7 +270,7 @@ const ProjectStage = ({ project, period, open, setOpen, children }: Props) => {
                 </div>
               </section>
 
-              <div className="flex flex-col gap-3 pt-6 border-t border-white/5">
+              <div className="flex lg:flex-col gap-3 pt-2 lg:pt-6 border-t border-white/5">
                 <a
                   href={project.link ?? undefined}
                   aria-disabled={project.deploy === "development"}
@@ -246,14 +280,14 @@ const ProjectStage = ({ project, period, open, setOpen, children }: Props) => {
                     project.deploy === "development"
                       ? "bg-white/30 cursor-not-allowed"
                       : "bg-white cursor-pointer hover:bg-light-blue transition-all active:scale-[0.98]"
-                  } flex items-center justify-center gap-3 w-full py-4 uppercase text-black text-sm font-bold rounded-xl `}
+                  } flex items-center justify-center gap-3 w-full py-2 lg:py-4 uppercase text-black text-sm font-bold rounded-xl `}
                 >
                   <Icons.External /> {t("projects.livePreview")}
                 </a>
                 <a
                   href={project.githubURL}
                   target="_blank"
-                  className=" cursor-pointer uppercase flex items-center justify-center gap-3 w-full py-4 bg-white/5 border border-white/10 text-white text-sm font-bold rounded-xl hover:bg-white/10 transition-all active:scale-[0.98]"
+                  className=" cursor-pointer uppercase flex items-center justify-center gap-3 py-2 lg:py-4 w-full bg-white/5 border border-white/10 text-white text-sm font-bold rounded-xl hover:bg-white/10 transition-all active:scale-[0.98]"
                 >
                   <Icons.Github /> {t("projects.sourceCode")}
                 </a>
@@ -262,7 +296,7 @@ const ProjectStage = ({ project, period, open, setOpen, children }: Props) => {
 
             <main className="lg:col-span-8 bg-[#141414] border-t lg:border-l border border-white/10 rounded-b-3xl lg:rounded-bl-none lg:rounded-r-3xl overflow-hidden flex flex-col">
               <header className="group/header h-10 bg-black/40 border-b border-white/5 flex items-center justify-between px-6">
-                <div className="flex gap-2 group/dots items-center">
+                <div className="hidden lg:flex gap-2 group/dots items-center">
                   <div
                     onClick={closeModal}
                     className="w-4 h-4 rounded-full bg-white/10 border-white/10 group-hover/header:bg-[#ff5f57] border group-hover/header:border-[#e0443e] shadow-sm flex items-center justify-center transition-all opacity-70 hover:opacity-100 cursor-pointer text-black/60"
@@ -318,7 +352,7 @@ const ProjectStage = ({ project, period, open, setOpen, children }: Props) => {
                     </svg>
                   </div>
                 </div>
-                <span className="text-center">
+                <span className="lg:text-center">
                   <p className="text-xs text-white/20 font-mono">
                     {project.type.br}
                   </p>

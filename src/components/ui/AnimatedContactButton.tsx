@@ -21,7 +21,7 @@ const AnimatedContactButton: React.FC<{
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`flex group items-center gap-4 px-8 py-4 rounded-full backdrop-blur-lg border bg-linear-to-tr from-black/60 to-black/40 shadow-lg hover:scale-105 hover:-translate-y-1 active:scale-95 transition-all duration-300 ease-out cursor-pointer group relative overflow-hidden ${theme}`}
+      className={`flex group items-center gap-4 py-4 px-4 sm:px-8 sm:py-4 rounded-full backdrop-blur-lg border bg-linear-to-tr from-black/60 to-black/40 shadow-lg hover:scale-105 hover:-translate-y-1 active:scale-95 transition-all duration-300 ease-out cursor-pointer group relative overflow-hidden ${theme}`}
     >
       <div
         className={`absolute inset-0 bg-linear-to-r from-transparent to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out ${theme
@@ -31,7 +31,7 @@ const AnimatedContactButton: React.FC<{
 
       <div className="relative z-10 transition-transform duration-500 group-hover:rotate-360">
         <Icon
-          className={`w-8 h-8 fill-current transition-all duration-300 ${theme
+          className={`w-6 h-6 sm:w-8 sm:h-8 fill-current transition-all duration-300 ${theme
             .split(" ")
             .find((c) => c.startsWith("text-"))} ${theme
             .split(" ")
@@ -39,7 +39,7 @@ const AnimatedContactButton: React.FC<{
         />
       </div>
 
-      <span className="relative z-10 text-xl font-medium text-gray-200 group-hover:text-white transition-colors duration-300">
+      <span className="relative z-10 text-md sm:text-xl font-medium text-gray-200 group-hover:text-white transition-colors duration-300">
         {label}
       </span>
     </a>

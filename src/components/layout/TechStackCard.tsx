@@ -11,7 +11,8 @@ const TechStackCard: React.FC<{ techObj: ITechData; id?: string }> = ({
   const { key, items } = techObj;
   const flex1 = key == "ongoing" ? "flex-3" : "flex-1";
   const additionalTitleMd =
-    key == "additional" && t(`tech_stack.additional`).split(" ")[0];
+    (key == "additional" || key == "ongoing") &&
+    t(`tech_stack.${key}`).split(" ")[0];
   return (
     <div
       key={id}
@@ -26,7 +27,7 @@ const TechStackCard: React.FC<{ techObj: ITechData; id?: string }> = ({
   `}
     >
       <h2
-        className={`${key == "additional" ? "md:block hidden" : ""} text-lg md:text-2xl font-bold text-center mb-2 text-main-blue`}
+        className={`${key == "additional" || key == "ongoing" ? "md:block hidden" : ""} text-lg md:text-2xl font-bold text-center mb-2 text-main-blue`}
       >
         {t(`tech_stack.${key}`)}
       </h2>
@@ -34,19 +35,22 @@ const TechStackCard: React.FC<{ techObj: ITechData; id?: string }> = ({
       <h2 className="md:hidden block text-lg md:text-2xl font-bold text-center mb-2 text-main-blue">
         {additionalTitleMd}
       </h2>
-      <ul className="flex flex-row justify-evenly">
+      <ul className="grid grid-cols-[repeat(auto-fit,minmax(40px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-y-8 gap-x-4 justify-items-center w-full">
         {items.map(({ title, icon: SvgIcon, id }, idx) => {
           const filteredProjects = PROJECTS_DATA.filter(({ mainTechUsed }) =>
             mainTechUsed.includes(id),
           );
 
           return (
-            <li key={idx} className="flex flex-col items-center md:gap-2">
+            <li
+              key={idx}
+              className="flex flex-col items-center md:gap-2 w-full max-w-[200px]"
+            >
               <SvgIcon className="w-10 h-10 md:h-25 md:w-25 select-none text-main-blue" />
-              <span className="font-medium text-[0.6rem] md:text-2xl text-dark-blue">
+              <span className="font-medium text-[0.6rem] text-nowrap md:text-2xl text-dark-blue text-center">
                 {title}
               </span>
-              <span className="h-7 flex items-center justify-center">
+              <span className="h-7 flex items-center justify-center gap-1">
                 {filteredProjects.map(({ icon: Icon, id }) => (
                   <Icon
                     key={id}

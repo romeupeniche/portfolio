@@ -3,6 +3,7 @@ import Web from "../projectDrawers/Web";
 import Mobile from "../projectDrawers/Mobile";
 import FileExplorerAnimatedIcon from "../../ui/FileExplorerAnimatedIcon";
 import ProjectStage from "./ProjectStage";
+import { useCallback, useState } from "react";
 
 export const ExplorerIconWithDrawer = ({
   project,
@@ -16,6 +17,19 @@ export const ExplorerIconWithDrawer = ({
   period: string;
 }) => {
   const { platform } = project;
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  const nextImage = useCallback(
+    () => setCurrentImageIndex((prev) => (prev + 1) % project.images.length),
+    [project.images.length],
+  );
+
+  const prevImage = useCallback(
+    () =>
+      setCurrentImageIndex(
+        (prev) => (prev - 1 + project.images.length) % project.images.length,
+      ),
+    [project.images.length],
+  );
   return (
     <div className="grid place-content-center">
       <FileExplorerAnimatedIcon onClick={() => setOpen(true)} />
@@ -24,11 +38,25 @@ export const ExplorerIconWithDrawer = ({
         setOpen={setOpen}
         project={project}
         period={period}
+        nextImage={nextImage}
+        prevImage={prevImage}
       >
         {platform === "web" ? (
-          <Web project={project} />
+          <Web
+            project={project}
+            setCurrentImageIndex={setCurrentImageIndex}
+            currentImageIndex={currentImageIndex}
+            nextImage={nextImage}
+            prevImage={prevImage}
+          />
         ) : (
-          <Mobile project={project} />
+          <Mobile
+            project={project}
+            setCurrentImageIndex={setCurrentImageIndex}
+            currentImageIndex={currentImageIndex}
+            nextImage={nextImage}
+            prevImage={prevImage}
+          />
         )}
       </ProjectStage>
     </div>

@@ -41,10 +41,7 @@ const Projects: React.FC = () => {
     [lang, monthFormatter],
   );
   return (
-    <section
-      id="projects"
-      className="bg-black-blue h-lvh min-h-[800px] p-12 flex flex-col gap-4"
-    >
+    <section id="projects" className="bg-black-blue p-12 flex flex-col gap-4">
       <header className="flex flex-row items-center justify-between">
         <h2 className="lg:text-8xl text-5xl font-black text-white italic tracking-tighter">
           {t("projects.title")}
@@ -52,7 +49,7 @@ const Projects: React.FC = () => {
         <img src={rocket} className="w-50 hidden xl:inline-block" />
       </header>
       {/* <nav className="flex h-full items-stretch gap-4"> */}
-      <nav className="flex h-full items-stretch gap-4 overflow-x-auto custom-scrollbar">
+      <nav className="flex items-stretch gap-4 overflow-x-auto custom-scrollbar">
         {/* da pra adicionar um justify-center quando adicionar mais um projeto */}
         {sortedProjects.map((project) => {
           const {
@@ -96,12 +93,12 @@ const Projects: React.FC = () => {
               <GlassDiv>
                 <header className="flex items-center justify-between">
                   <span className="group">
-                    <h1 className="text-5xl italic font-black tracking-tight leading-none">
+                    <h1 className="text-2xl sm:text-5xl italic font-black tracking-tight leading-none">
                       {title}
                     </h1>
                     <div className="flex items-center gap-3 mb-2">
                       <span className="shrink-0 w-6 h-px bg-light-blue/50 group-hover:w-10 transition-all" />
-                      <h4 className="text-white/20 font-bold text-sm tracking-wide group-hover:text-light-blue transition-colors">
+                      <h4 className="text-white/20 font-bold text-xs sm:text-sm tracking-wide group-hover:text-light-blue transition-colors">
                         {period}
                       </h4>
                     </div>
@@ -110,16 +107,16 @@ const Projects: React.FC = () => {
                     className={`h-full w-auto p-2 ${id === "portfolio" && "text-light-blue"}`}
                   />
                 </header>
-                <div className="w-full h-[50vh] overflow-hidden">
+                <main className="w-full h-[30lvh] sm:h-[50lvh] overflow-hidden">
                   <img
                     src={heroImage}
                     onClick={() => setIsDrawerOpen(true)}
                     draggable={false}
-                    className="select-none w-full rounded-xl transition-all cursor-pointer duration-300 hover:shadow-white hover:scale-102 hover:transform hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]"
+                    className="select-none w-[50lvw] h-full object-contain rounded-xl transition-all cursor-pointer duration-300 hover:shadow-white hover:scale-102 hover:transform hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]"
                   />
-                </div>
+                </main>
 
-                <footer className="mt-auto flex justify-between items-center">
+                <footer className="mt-auto flex sm:flex-row flex-col sm:gap-0 gap-4 justify-between items-center pt-14">
                   <div className="flex gap-4 items-center">
                     {mainTechUsed.map((techId) => {
                       const tech = techData

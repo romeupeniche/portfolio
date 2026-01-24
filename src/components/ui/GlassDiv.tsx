@@ -68,10 +68,10 @@ const GlassDiv = ({
                 after:border after:border-solid after:pointer-events-none
                 after:border-[rgba(255,255,255,0.3)]
                 
-                ${options ? "md:px-8 px-4" : title ? "cursor-pointer hover:text-light-blue px-4" : "px-8"}
+                ${options ? "md:px-8 px-4" : title ? "cursor-pointer hover:text-light-blue px-3 sm:px-4" : "px-8"}
                 ${
                   children
-                    ? "after:rounded-[20px] rounded-3xl before:rounded-[20px] h-full w-[70vh]"
+                    ? "after:rounded-[20px] rounded-3xl before:rounded-[20px] xl:w-[35vw] max-w-2xl"
                     : `rounded-lg after:rounded ${
                         isLowPerf
                           ? "after:[background:#2d2d2dee]"
@@ -82,13 +82,13 @@ const GlassDiv = ({
       ref={divRef}
       onClick={onClick}
     >
-      <span className="flex gap-3 h-full">
+      <span className="flex gap-2 sm:gap-3 h-full">
         {options ? (
           <>
             <OptionsSpan
               md
               onClick={toggleLowPerf}
-              className={`transform font-semibold text-md origin-bottom ${isLowPerf ? "text-[#F59E0B]" : "text-[#4ade80]"}`}
+              className={`transform font-semibold text-sm sm:text-md origin-bottom ${isLowPerf ? "text-[#F59E0B]" : "text-[#4ade80]"}`}
             >
               {isLowPerf ? "ECO" : t("header.high")}
             </OptionsSpan>
@@ -101,7 +101,7 @@ const GlassDiv = ({
               >
                 {Icon && (
                   <span className="md:hidden block text-inherit">
-                    <Icon className="w-7 h-7" />
+                    <Icon className="w-5 h-5 sm:w-7 sm:h-7" />
                   </span>
                 )}
 
@@ -111,7 +111,7 @@ const GlassDiv = ({
             <OptionsSpan
               md
               onClick={toggleLang}
-              className={`transform font-semibold text-md origin-bottom ${lang === "en" ? "text-[#FB7185]" : "text-[#009B3A]"}`}
+              className={`transform font-semibold text-sm sm:text-md origin-bottom ${lang === "en" ? "text-[#FB7185]" : "text-[#009B3A]"}`}
             >
               {lang.toUpperCase()}
             </OptionsSpan>
@@ -119,7 +119,7 @@ const GlassDiv = ({
         ) : children ? (
           <span
             className={`
-              z-5 select-none flex flex-col h-full
+              z-5 select-none flex flex-col
                             `}
           >
             {children}
@@ -130,7 +130,8 @@ const GlassDiv = ({
               onClick={onClick}
               className={`
               z-10 select-none
-              md:text-[1rem] text-lg
+              flex items-center
+              md:text-[1rem] sm:text-lg text-xs
                             `}
             >
               {title}
@@ -156,7 +157,7 @@ const OptionsSpan: React.FC<{
       ${md && "md:hidden block"}
       relative z-10 cursor-pointer transition 
       hover:text-light-blue
-      pr-3 
+      pr-2 sm:pr-3 
       border-r border-solid border-white/30 
       last:border-r-0 last:pr-0
       select-none

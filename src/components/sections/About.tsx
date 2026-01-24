@@ -44,7 +44,7 @@ const About: React.FC = () => {
       <h1 className="font-black italic tracking-tighter text-6xl md:text-8xl text-center">
         {t("about_me.title")}
       </h1>
-      <main className="flex items-center justify-between gap-14">
+      <main className="flex flex-col sm:flex-row items-center sm:text-left text-center justify-between gap-4 sm:gap-14">
         <img
           src={child}
           className="w-30 h-30 md:w-80 md:h-80 rounded-full object-cover mx-auto"
@@ -54,7 +54,7 @@ const About: React.FC = () => {
           {formatText(t("about_me.paragraph1"))}
         </p>
       </main>
-      <main className="flex items-center justify-between gap-14">
+      <main className="flex flex-col-reverse sm:flex-row items-center justify-between sm:text-left text-center gap-4 sm:gap-14 pt-4 sm:pt-0 border-t sm:border-0 border-t-light-blue/10">
         <p className="md:text-2xl text-xs font-medium tracking-tighter">
           {formatText(t("about_me.paragraph2"))}
         </p>
