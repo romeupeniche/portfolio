@@ -7,7 +7,7 @@ const FileExplorerAnimatedIcon: React.FC<{ onClick: () => void }> = ({
       className="relative group flex items-center justify-center w-10 h-10 overflow-visible cursor-pointer"
       onClick={onClick}
     >
-      <div className="scale-[0.18] shrink-0 origin-center">
+      <div className="sm:scale-[0.18] scale-[0.14] shrink-0 origin-center">
         <div className="file relative w-60 h-40 origin-bottom perspective-[1500px] z-50">
           <div
             className="work-5 bg-dark-blue w-full h-full origin-top rounded-2xl rounded-tl-none group-hover:shadow-[0_20px_40px_rgba(0,0,0,.2)] transition-all ease duration-300 relative 

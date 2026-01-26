@@ -11,7 +11,7 @@ const TechStack: React.FC = () => {
   return (
     <section
       id="tech-stack"
-      className="min-h-lvh w-full flex flex-col p-10 bg-black-blue overflow-hidden relative"
+      className="min-h-lvh w-full flex flex-col pt-10 sm:pt-0 sm:p-10 bg-black-blue overflow-hidden relative"
     >
       {!isLowPerf && (
         <>
@@ -40,7 +40,7 @@ const TechStack: React.FC = () => {
         ) : (
           <TextScrambleLoop
             phrases={[t("tech_stack.title1"), t("tech_stack.title2")]}
-            className="font-black italic tracking-tighter lg:text-8xl text-5xl text-center text-white"
+            className="font-black italic tracking-tighter lg:text-8xl text-5xl text-center text-white text-nowrap"
           />
         )}
       </header>

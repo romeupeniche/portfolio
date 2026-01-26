@@ -38,7 +38,7 @@ const About: React.FC = () => {
   const { t } = useSettingsStore();
   return (
     <section
-      className="h-lvh min-h-[800px] gap-4 bg-linear-to-b from-transparent to-black-blue p-12 flex flex-col justify-center"
+      className="h-lvh min-h-[800px] gap-4 bg-linear-to-b from-transparent to-black-blue p-4 sm:p-12 flex flex-col justify-center"
       id="about"
     >
       <h1 className="font-black italic tracking-tighter text-6xl md:text-8xl text-center">

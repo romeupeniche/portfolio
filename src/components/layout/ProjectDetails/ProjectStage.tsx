@@ -354,7 +354,7 @@ const ProjectStage = ({
                 </div>
                 <span className="lg:text-center">
                   <p className="text-xs text-white/20 font-mono">
-                    {project.type.br}
+                    {project.type[lang]}
                   </p>
                   <p className="text-xs text-white/20 font-mono">{period}</p>
                 </span>

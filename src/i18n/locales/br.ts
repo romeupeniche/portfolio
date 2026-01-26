@@ -38,7 +38,7 @@ export const br = {
     librariesTools: "Bibliotecas e Ferramentas",
     featureBreakdown: "Funcionalidades",
     sourceCode: "Código Fonte",
-    livePreview: "Visualizar Projeto",
+    livePreview: "Ver Projeto",
   },
   awards: {
     title: "Certificados & Prêmios",

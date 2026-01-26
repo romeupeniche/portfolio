@@ -28,7 +28,7 @@ const LaptopPreviewButton = ({
       onClick={!disabled ? onClick : undefined}
     >
       <div className="scale-[0.18] shrink-0 origin-center transition-transform duration-500">
-        <div className="relative w-64 perspective-[1500px]">
+        <div className="relative w-40 sm:w-64 perspective-[1500px]">
           <div
             className={`absolute inset-0 flex items-center justify-center z-30 transition-all duration-300
             ${

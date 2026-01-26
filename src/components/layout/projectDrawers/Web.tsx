@@ -58,7 +58,7 @@ const Web: React.FC<{
           <div className="absolute inset-0 pointer-events-none flex items-center justify-between px-2 md:px-4">
             <button
               className="group/wrapper w-10 h-10 md:w-12 md:h-12 cursor-pointer flex items-center justify-center rounded-full bg-black/60 border border-white/10 pointer-events-auto hover:bg-black/80 transition-all 
-              opacity-100 md:opacity-0 md:group-hover:opacity-100" // Sempre visível no mobile
+              opacity-100 md:opacity-0 md:group-hover:opacity-100"
               onClick={prevImage}
             >
               <ChevronIcon className="w-5 h-5 md:w-6 md:h-6 rotate-180 text-white group-hover/wrapper:text-light-blue relative -left-0.5 transition-colors" />
@@ -66,7 +66,7 @@ const Web: React.FC<{
             <button
               onClick={nextImage}
               className="group/wrapper w-10 h-10 md:w-12 md:h-12 cursor-pointer flex items-center justify-center rounded-full bg-black/60 border border-white/10 pointer-events-auto hover:bg-black/80 transition-all 
-              opacity-100 md:opacity-0 md:group-hover:opacity-100" // Sempre visível no mobile
+              opacity-100 md:opacity-0 md:group-hover:opacity-100"
             >
               <ChevronIcon className="w-5 h-5 md:w-6 md:h-6 text-white relative group-hover/wrapper:text-light-blue -right-0.5 transition-colors" />
             </button>

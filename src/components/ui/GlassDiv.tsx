@@ -71,7 +71,7 @@ const GlassDiv = ({
                 ${options ? "md:px-8 px-4" : title ? "cursor-pointer hover:text-light-blue px-3 sm:px-4" : "px-8"}
                 ${
                   children
-                    ? "after:rounded-[20px] rounded-3xl before:rounded-[20px] xl:w-[35vw] max-w-2xl"
+                    ? "after:rounded-[20px] rounded-3xl before:rounded-[20px] xl:w-[35vw] max-w-2xl min-w-sm"
                     : `rounded-lg after:rounded ${
                         isLowPerf
                           ? "after:[background:#2d2d2dee]"
@@ -119,7 +119,7 @@ const GlassDiv = ({
         ) : children ? (
           <span
             className={`
-              z-5 select-none flex flex-col
+              z-5 select-none flex flex-col w-full
                             `}
           >
             {children}
@@ -159,6 +159,7 @@ const OptionsSpan: React.FC<{
       hover:text-light-blue
       pr-2 sm:pr-3 
       border-r border-solid border-white/30 
+      md:nth-last-2:border-r-0 md:nth-last-2:pr-0
       last:border-r-0 last:pr-0
       select-none
       flex items-center text-nowrap

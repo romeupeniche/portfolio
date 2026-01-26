@@ -41,16 +41,17 @@ const Projects: React.FC = () => {
     [lang, monthFormatter],
   );
   return (
-    <section id="projects" className="bg-black-blue p-12 flex flex-col gap-4">
+    <section
+      id="projects"
+      className="bg-black-blue p-4 pt-10 sm:pt-0 sm:p-12 flex flex-col gap-4"
+    >
       <header className="flex flex-row items-center justify-between">
         <h2 className="lg:text-8xl text-5xl font-black text-white italic tracking-tighter">
           {t("projects.title")}
         </h2>
         <img src={rocket} className="w-50 hidden xl:inline-block" />
       </header>
-      {/* <nav className="flex h-full items-stretch gap-4"> */}
       <nav className="flex items-stretch gap-4 overflow-x-auto custom-scrollbar">
-        {/* da pra adicionar um justify-center quando adicionar mais um projeto */}
         {sortedProjects.map((project) => {
           const {
             id,
@@ -82,6 +83,34 @@ const Projects: React.FC = () => {
             periodEnd === periodStart
               ? periodStart
               : periodStart + " - " + periodEnd;
+
+          const TechIcons = mainTechUsed.map((techId) => {
+            const tech = techData
+              .flatMap((category) => category.items)
+              .find((item) => item.id === techId);
+
+            if (!tech) return null;
+            const { icon: TechIcon } = tech;
+
+            return (
+              <div
+                key={techId}
+                className="relative flex items-center justify-center"
+              >
+                <TechIcon
+                  className="rounded peer w-7 h-7 sm:w-10 sm:h-10 text-white/20 hover:text-light-blue transition-colors cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    scrollToSection("tech-stack");
+                  }}
+                />
+                <span className="absolute hidden sm:block -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-light-blue text-[8px] text-white rounded opacity-0 peer-hover:opacity-100 peer-hover:-translate-y-1 transition-all duration-200 pointer-events-none whitespace-nowrap shadow-lg">
+                  {tech.title}
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-light-blue rotate-45" />
+                </span>
+              </div>
+            );
+          });
           return (
             <motion.div
               key={id}
@@ -107,46 +136,20 @@ const Projects: React.FC = () => {
                     className={`h-full w-auto p-2 ${id === "portfolio" && "text-light-blue"}`}
                   />
                 </header>
-                <main className="w-full h-[30lvh] sm:h-[50lvh] overflow-hidden">
+                <main className="w-full h-[250px] sm:h-[50lvh] overflow-hidden flex items-center justify-center">
                   <img
                     src={heroImage}
                     onClick={() => setIsDrawerOpen(true)}
                     draggable={false}
-                    className="select-none w-[50lvw] h-full object-contain rounded-xl transition-all cursor-pointer duration-300 hover:shadow-white hover:scale-102 hover:transform hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]"
+                    className="select-none w-full h-full object-contain rounded-xl transition-all cursor-pointer duration-300 hover:shadow-white hover:scale-102 hover:transform hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]"
                   />
                 </main>
 
-                <footer className="mt-auto flex sm:flex-row flex-col sm:gap-0 gap-4 justify-between items-center pt-14">
-                  <div className="flex gap-4 items-center">
-                    {mainTechUsed.map((techId) => {
-                      const tech = techData
-                        .flatMap((category) => category.items)
-                        .find((item) => item.id === techId);
-
-                      if (!tech) return null;
-                      const { icon: TechIcon } = tech;
-
-                      return (
-                        <div
-                          key={techId}
-                          className="relative flex items-center justify-center"
-                        >
-                          <TechIcon
-                            className="rounded peer w-10 h-10 text-white/20 hover:text-light-blue transition-colors cursor-pointer"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              scrollToSection("tech-stack");
-                            }}
-                          />
-                          <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-light-blue text-[8px] text-white rounded opacity-0 peer-hover:opacity-100 peer-hover:-translate-y-1 transition-all duration-200 pointer-events-none whitespace-nowrap shadow-lg">
-                            {tech.title}
-                            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-light-blue rotate-45" />
-                          </span>
-                        </div>
-                      );
-                    })}
+                <footer className="mt-auto flex sm:flex-row flex-col sm:gap-0 gap-4 justify-between items-center pt-5 sm:pt-10">
+                  <div className="gap-4 items-center hidden sm:flex">
+                    {TechIcons}
                   </div>
-                  <nav className="flex gap-8 items-center">
+                  <nav className="flex gap-8 items-center justify-between sm:justify-stretch w-full sm:w-auto">
                     <LaptopPreviewButton
                       onClick={previewOnClick!}
                       screenImage={images[0].img}
@@ -155,6 +158,9 @@ const Projects: React.FC = () => {
                         project.deploy === "PyInstaller" ? "game" : "preview"
                       }
                     />
+                    <div className="gap-4 items-center flex sm:hidden">
+                      {TechIcons}
+                    </div>
                     <ExplorerIconWithDrawer
                       project={project}
                       open={isDrawerOpen}

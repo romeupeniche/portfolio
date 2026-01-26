@@ -40,7 +40,7 @@ const Mobile: React.FC<{
       <section className="flex-1 flex flex-col items-center justify-center space-y-6">
         <div className="relative group h-full">
           <div className="relative z-10 rounded-[3rem] overflow-hidden h-full">
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
               <motion.img
                 key={currentImageIndex}
                 src={project.images[currentImageIndex].img}
