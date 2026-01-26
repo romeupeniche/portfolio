@@ -18,8 +18,8 @@
 ---
 
 ### 🔗 Quick Access
-> **Status:** 🚧 Still under development  
-> **Link:** [Deploying soon...]
+> **Status:** ✅ Finalized!  
+> [![Live Preview](https://img.shields.io/badge/LIVE_PREVIEW-000000?style=for-the-badge&logo=netlify&logoColor=white)](https://romeupeniche.netlify.app/)
 
 ---
 
@@ -70,8 +70,9 @@ npm run dev
 ---
 
 ### 🔗 Acesse Rapidamente
-> **Status:** 🚧 Ainda em desenvolvimento  
-> **Link:** [Em breve aqui...]
+
+> **Status:** ✅ Finalizado!  
+> [![Live Preview](https://img.shields.io/badge/LIVE_PREVIEW-000000?style=for-the-badge&logo=netlify&logoColor=white)](https://romeupeniche.netlify.app/)
 
 ---
 
