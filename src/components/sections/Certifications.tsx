@@ -77,9 +77,10 @@ const Certifications = () => {
         {sortedCertifications.map((cert) => (
           <motion.div
             key={cert.title + cert.date}
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            // viewport={{ once: true }}
+            transition={{ duration: 0.3 }}
+            // className="shrink-0"
             className="group relative flex-none w-[350px] md:w-[450px] flex flex-col snap-start border border-white/5 rounded-2xl overflow-hidden hover:border-light-blue/50 transition-all duration-500"
           >
             <div className="absolute top-4 left-4 z-1 flex">
